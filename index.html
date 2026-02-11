@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You</title>
+<style>
+body {
+    background-color: #111;
+    color: #f5f5f5;
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 650px;
+}
+
+input {
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.strike {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div id="login">
+        <h2>If you know… you know. When you know... you know. </h2>
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="checkPassword()">Enter</button>
+    </div>
+
+    <div id="content" class="hidden">
+      
+<h2>My Dearest CeCe,</h2>
+
+        <p>
+        Please never forget that the sun rises and sets with your smile. At least to me it does. You're the only thing on this planet worth worshipping.<br><br>
+
+        All my love,<br>
+        Edward.
+        </p>
+
+        <br><br>
+        
+<p>
+        I am proud of you.<br>
+        Truly.<br><br>
+
+        Not because of what we were.<br>
+        Not because of what we tried to be.<br>
+        But because of who you are becoming.<br><br>
+
+        There is no return hidden here.<br>
+        No expectation.<br>
+        Just gratitude.<br><br>
+      </p>
+      
+        <h2>My dearest Celia,</h2>
+      <p>
+        Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
+
+        I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheer just as loudly as I did the other times.<br><br>
+
+        You definitely would be the greatest pilot of our generation.<br><br>
+
+        All my love,
+        </p>
+
+        <p class="strike">Edward</p>
+        <p>Evelyn</p>
+    </div>
+</div>
+
+<script>
+function checkPassword() {
+    var password = document.getElementById("password").value;
+    if(password === "violentbentbackwardsoverthegrass") {  // Cambia esta contraseña
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("content").classList.remove("hidden");
+    } else {
+        alert("Wrong password.");
+    }
+}
+</script>
+
+</body>
+</html>
