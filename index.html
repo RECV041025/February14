@@ -246,7 +246,7 @@ input {
     You definitely would be the greatest pilot of our generation.<br><br>
     All my love,
     </p>
-    <p> class="strike">Edward</p>
+    <p class="strike">Edward</p>
     <p>Evelyn</p>
     <button onclick="goHome()">Back to Start</button>
 </div>
@@ -254,10 +254,9 @@ input {
 </div>
 
 <!-- ALERTA -->
-
 <div id="customAlert">
     <p>
-        ¡Wrong password!<br>
+        wrong password!<br>
         MAYBE YOU HAVE TO READ IT AGAIN, BABE.<br>
         tip: write it all together in lowercase
     </p>
@@ -295,6 +294,12 @@ function goHome(){
 
 // REPRODUCIR VIDEO
 function playVideo(id){
+    // Pausar todos los videos
+    document.querySelectorAll("video").forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+    });
+    // Reproducir solo el seleccionado
     var vid = document.getElementById(id);
     vid.muted = false;
     vid.play();
@@ -302,3 +307,4 @@ function playVideo(id){
 </script>
 </body>
 </html>
+
