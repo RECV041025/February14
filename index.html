@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
+
 <style>
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #111;
+    background-color: #5a0f0f; /* rojo vino elegante después del login */
     color: #fff;
 }
 
@@ -19,6 +16,7 @@ body {
 .container {
     max-width: 900px;
     width: 95%;
+    margin: auto;
     padding: 20px;
     text-align: center;
     position: relative;
@@ -56,33 +54,47 @@ button:after {
     100% { right: 15px; transform: translateY(-50%) rotate(0deg);}
 }
 
-/* LOGIN CON PORTADA */
+/* LOGIN FULL SCREEN */
+#login {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+}
+
 .login-background {
-    position: relative;
     width: 100%;
-    max-width: 600px;
-    border-radius: 15px;
+    height: 100vh;
     overflow: hidden;
 }
+
 .login-background img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
+    object-fit: cover;
 }
+
 .login-overlay {
     position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.55);
     display:flex;
     flex-direction: column;
     justify-content:center;
     align-items:center;
-    color: #fff;
-    font-size: 22px;
-    padding: 20px;
+    font-size: 26px;
+    text-align: center;
 }
 
-/* ALERTA PERSONALIZADA */
+/* INPUT */
+input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    width: 250px;
+    margin-top: 15px;
+}
+
+/* ALERTA */
 #customAlert {
     position: fixed;
     top: 50%;
@@ -92,70 +104,60 @@ button:after {
     color: #fff;
     padding: 40px;
     border-radius: 25px;
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     z-index: 9999;
     box-shadow: 0 0 50px #ff4c4c;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition: 0.4s ease;
     opacity: 0;
 }
 #customAlert.show { 
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
-#customAlert button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    font-size: 16px;
-    border-radius: 20px;
-    background-color: #ff4c4c;
-    color: white;
-}
-#customAlert button:hover { background-color: #b22222; }
 
-/* INPUT */
-input {
-    padding: 12px;
-    border-radius: 5px;
-    border: none;
-    width: 250px;
+/* SECCIONES */
+.hidden { display: none; }
+.section { 
+    display: none; 
+    animation: fadeIn 1s ease forwards; 
+    margin-top: 40px;
 }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-/* SECCIONES DE VIDEO */
+/* VIDEOS */
 .video-container {
     position: relative;
-    background-color: #b22222; /* rojo pasional */
+    background-color: #b22222;
     max-width: 700px;
-    margin: 0 auto;
-    border-radius: 20px;
+    margin: 40px auto;
+    border-radius: 25px;
     overflow: hidden;
 }
+
 .video-container video {
     width: 100%;
     height: auto;
     display: block;
 }
+
 .video-overlay {
     position: absolute;
-    top:0; left:0; right:0; bottom:0;
+    inset: 0;
     background: rgba(0,0,0,0.5);
     display:flex;
-    flex-direction: column;
     justify-content:center;
     align-items:center;
-    color: #fff;
-    padding: 20px;
 }
 
-/* SECCIONES */
-.hidden { display: none; }
-.section { display: none; animation: fadeIn 1s ease forwards; margin-top: 20px;}
-@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
-
 /* TEXTO FINAL */
-.strike { text-decoration: line-through; opacity: 0.7; }
+.strike {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
 </style>
 </head>
+
 <body>
 <div class="container">
 
@@ -164,88 +166,140 @@ input {
     <div class="login-background">
         <img src="bookcover2.jpg" alt="Book Cover">
         <div class="login-overlay">
-            <h2>If you know… you know. </h2>
-            <input type="password" id="password" placeholder="Password">
-            <br>
-            <button type="button" onclick="checkPassword()">Enter</button>
+            <h2>If you know… you know. When you know... you know.</h2>
+            <input type="password" id="password" placeholder="password">
+            <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
 </div>
 
-<!-- SECCIÓN 1: VIDEO 1 -->
+<!-- SECTION 1 -->
 <div id="section1" class="section">
     <div class="video-container">
-        <video id="video1" src="song1.mp4" muted></video>
+        <video id="video1" src="song1.mp4"></video>
         <div class="video-overlay">
             <button onclick="playVideo('video1'); nextSection(2)">Play & Continue</button>
         </div>
     </div>
 </div>
 
-<!-- SECCIÓN 2: TEXTO INICIAL -->
+<!-- SECTION 2 -->
 <div id="section2" class="section">
     <h2>Hope you enjoy it</h2>
     <p>I'm sorry. I just wanted to tell you this…</p>
     <button onclick="nextSection(3)">Next</button>
 </div>
 
-<!-- SECCIÓN 3: TEXTO ÍNTIMO -->
+<!-- SECTION 3 -->
 <div id="section3" class="section">
     <h2>My Dearest CeCe,</h2>
     <p>
-    Please never forget that the sun rises and sets with your smile. At least to me it does. 
-    You're the only thing on this planet worth worshipping.<br><br>
+    Please never forget that the sun rises and sets with your smile.<br><br>
     All my love,<br>
     Edward.
     </p>
-    <p><i>No expectations. </i></p>
+    <p><i>No expectations.</i></p>
     <button onclick="nextSection(4)">Next & Video</button>
 </div>
 
-<!-- SECCIÓN 4: VIDEO 2 -->
+<!-- SECTION 4 -->
 <div id="section4" class="section">
     <div class="video-container">
-        <video id="video2" src="song2.mp4" muted></video>
+        <video id="video2" src="song2.mp4"></video>
         <div class="video-overlay">
             <button onclick="playVideo('video2'); nextSection(5)">Play & Continue</button>
         </div>
     </div>
 </div>
 
-<!-- SECCIÓN 5: TEXTO INTERMEDIO -->
+<!-- SECTION 5 -->
 <div id="section5" class="section">
     <h2>I am proud of you</h2>
-    <p>
-        Truly.<br><br>
-        Not because of what we were.<br>
-        Not because of what we tried to be.<br>
-        But because of who you are becoming.<br><br>
-        There is no return hidden here.<br>
-        No expectation.<br>
-        Just gratitude.<br><br>
-    </p>
+<p>
+Truly.<br><br>
+
+Not because of what we were.<br>
+But because of who you are becoming.<br><br>
+
+I am deeply proud of the woman you have become — 
+professionally, personally, entirely.<br>
+Your progress. Your discipline. Your evolution.<br>
+It shows. And it is beautiful.<br><br>
+
+There are many things we both could have handled better.<br>
+We were imperfect. Emotional. Learning.<br>
+But we did what we could with what we had at the time.<br>
+Not to justify it — just to acknowledge it.<br><br>
+
+I would have loved to be there in this chapter of your life,<br>
+to watch you rise even higher.<br>
+To grow alongside you.<br>
+But I am not strong enough to stand beside you<br>
+and watch you build it with someone else.<br>
+Not again.<br><br>
+
+And no, I am not angry.<br>
+Well… maybe a little.<br>
+Sometimes my thoughts consume me and I replay everything.<br>
+But even then, I choose to wish you well.<br><br>
+
+Maybe we had that In-yeon —<br>
+that connection written somewhere beyond us.<br>
+But maybe we have not yet lived through the eight thousand layers<br>
+that would allow us to meet again in another lifetime and stay.<br><br>
+
+Since the first time I read <i>The Seven Husbands of Evelyn Hugo</i>, 
+I imagined living a love story like that.<br>
+I did not think it would be this complicated in the 21st century.<br>
+Yet here we are.<br>
+Right now, I feel a little like Evelyn watching Celia on television.<br><br>
+
+I hope you liked the flowers I left at your door —<br>
+the same door I watched you open so many times:<br>
+with happiness, with sadness, with anger. Anyways, I am not here to talk about what I feel.<br><br>
+
+You still have so many skies to conquer.<br>
+And as I once told you,<br>
+I will always pray for you in every flight you take.<br><br>
+
+I truly hope one day I get to see you fly —<br>
+or maybe even be on a flight with you.<br>
+Captain Shed.<br><br>
+
+I do not expect anything from this.<br>
+I just needed to leave it here — gently.<br><br>
+
+No expectation.<br>
+Just gratitude.<br><br>
+
+Take care.
+</p>
     <button onclick="nextSection(6)">Next & Video</button>
 </div>
 
-<!-- SECCIÓN 6: VIDEO 3 -->
+<!-- SECTION 6 -->
 <div id="section6" class="section">
     <div class="video-container">
-        <video id="video3" src="song3.mp4" muted></video>
+        <video id="video3" src="song3.mp4"></video>
         <div class="video-overlay">
             <button onclick="playVideo('video3'); nextSection(7)">Play & Continue</button>
         </div>
     </div>
 </div>
 
-<!-- SECCIÓN 7: TEXTO FINAL -->
+<!-- SECTION 7 -->
 <div id="section7" class="section">
     <h2>My dearest Celia,</h2>
-    <p>
-    Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
-    I wish for nothing more than your complete and total happiness.<br><br>
-    You definitely would be the greatest pilot of our generation.<br><br>
-    All my love,
-    </p>
+     <p>
+            Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
+
+            I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheered just as loudly as I did the other times.<br><br>
+
+            You definitely would be the greatest pilot of our generation.<br><br>
+
+            All my love,
+            </p>
+
     <p class="strike">Edward</p>
     <p>Evelyn</p>
     <button onclick="goHome()">Back to Start</button>
@@ -253,58 +307,51 @@ input {
 
 </div>
 
-<!-- ALERTA -->
+<!-- ALERT -->
 <div id="customAlert">
     <p>
-        wrong password!<br>
+        Wrong password!<br>
         MAYBE YOU HAVE TO READ IT AGAIN, BABE.<br>
-        tip: write it all together in lowercase
+        tip: write the title all together in lowercase
     </p>
     <button onclick="closeAlert()">ok</button>
 </div>
 
 <script>
-// LOGIN
 function checkPassword() {
     var password = document.getElementById("password").value;
     if(password === "violentbentbackwardsoverthegrass") {
-        document.getElementById("login").classList.add("hidden");
+        document.getElementById("login").style.display = "none";
         document.getElementById("section1").style.display = "block";
     } else {
         document.getElementById("customAlert").classList.add("show");
     }
 }
 
-// Cerrar alerta
 function closeAlert() {
     document.getElementById("customAlert").classList.remove("show");
 }
 
-// CAMBIO DE SECCIONES
-function nextSection(sectionNumber){
+function nextSection(num){
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+sectionNumber).style.display = "block";
+    document.getElementById("section"+num).style.display = "block";
 }
 
-// VOLVER AL INICIO
 function goHome(){
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("login").style.display = "block";
 }
 
-// REPRODUCIR VIDEO
+/* Pausa automática de videos */
 function playVideo(id){
-    // Pausar todos los videos
-    document.querySelectorAll("video").forEach(v => {
+    document.querySelectorAll("video").forEach(v=>{
         v.pause();
         v.currentTime = 0;
     });
-    // Reproducir solo el seleccionado
     var vid = document.getElementById(id);
-    vid.muted = false;
     vid.play();
 }
 </script>
+
 </body>
 </html>
-
