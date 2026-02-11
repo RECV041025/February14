@@ -3,34 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
-
 <style>
+/* FONDO GENERAL */
 body {
     margin: 0;
-    background: linear-gradient(135deg, #1a0000, #3b0a0a, #000);
-    color: #f8e9e9;
+    background: url('bookcover.jpg') no-repeat center center fixed;
+    background-size: cover;
     font-family: 'Georgia', serif;
+    color: #f8e9e9;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     text-align: center;
+    overflow-x: hidden;
 }
 
+/* CONTENEDOR CENTRAL */
 .container {
     max-width: 750px;
     padding: 40px;
+    background: rgba(0,0,0,0.65);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,0,0,0.5);
 }
 
+/* CABECERAS */
 h2 {
     color: #ffd6d6;
+    animation: fadeInMove 1s ease forwards;
 }
 
+/* PARRAFOS */
 p {
     line-height: 1.8;
     font-size: 18px;
+    animation: fadeInMove 1s ease forwards;
 }
 
+/* INPUT */
 input {
     padding: 12px;
     margin-top: 20px;
@@ -39,66 +50,136 @@ input {
     width: 250px;
 }
 
+/* BOTONES AVIÓN */
 button {
-    padding: 12px 25px;
+    position: relative;
+    padding: 12px 30px;
     margin-top: 25px;
     border: none;
-    border-radius: 30px;
-    background-color: #8b0000;
+    border-radius: 50px;
+    background-color: #b22222;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s ease;
+    overflow: hidden;
 }
 
 button:hover {
-    background-color: #b22222;
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(-5deg);
+    background-color: #ff4c4c;
 }
 
+/* ICONO AVIÓN QUE SE MUEVE */
+button:after {
+    content: '✈';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: fly 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes fly {
+    0% { right: 15px; transform: translateY(-50%) rotate(0deg);}
+    50% { right: 10px; transform: translateY(-55%) rotate(10deg);}
+    100% { right: 15px; transform: translateY(-50%) rotate(0deg);}
+}
+
+/* BOTONES DE VOLVER */
+.back-btn {
+    background-color: #ffd6d6;
+    color: #800000;
+}
+
+.back-btn:hover {
+    background-color: #ffb3b3;
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* SECCIONES OCULTAS */
 .hidden {
     display: none;
 }
 
 .section {
     display: none;
-    animation: fadeIn 1.2s ease forwards;
+    animation: fadeIn 1s ease forwards;
+    background: linear-gradient(180deg, rgba(255,0,0,0.15), rgba(255,192,203,0.15));
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
-.strike {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
+/* FADE IN DE TEXTO */
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
 }
 
-.book-cover {
-    width: 200px;
-    margin-top: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255,0,0,0.3);
+/* ANIMACION DE ENTRADA DEL TEXTO */
+@keyframes fadeInMove {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
-.hint {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #ffb3b3;
-    opacity: 0.8;
+/* TEXTO TACHADO */
+.strike {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* IMAGEN PORTADA */
+.book-cover {
+    width: 200px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+/* ALERTA PERSONALIZADA */
+#customAlert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background-color: rgba(139,0,0,0.95);
+    color: #fff;
+    padding: 40px;
+    border-radius: 25px;
+    font-size: 22px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 0 50px #ff4c4c;
+    transition: transform 0.5s ease;
+}
+
+#customAlert.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#customAlert button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 20px;
+    background-color: #ff4c4c;
+    color: white;
+}
+
+#customAlert button:hover {
+    background-color: #b22222;
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
     <!-- LOGIN -->
     <div id="login">
         <h2>If you know… you know.</h2>
-        
+
         <img src="bookcover.jpg" class="book-cover">
 
         <div class="hint">
@@ -117,7 +198,6 @@ button:hover {
         <!-- SECTION 1 -->
         <div id="section1" class="section">
             <h2>My Dearest CeCe,</h2>
-
             <p>
             Please never forget that the sun rises and sets with your smile. 
             At least to me it does. You're the only thing on this planet worth worshipping.<br><br>
@@ -127,6 +207,8 @@ button:hover {
             </p>
 
             <button onclick="nextSection(2)">Empecemos el recorrido</button>
+            <br>
+            <button class="back-btn" onclick="goHome()">Volver al inicio</button>
         </div>
 
         <!-- SECTION 2 -->
@@ -145,16 +227,17 @@ button:hover {
             </p>
 
             <button onclick="nextSection(3)">Siguiente</button>
+            <br>
+            <button class="back-btn" onclick="nextSection(1)">Volver al inicio</button>
         </div>
 
         <!-- SECTION 3 -->
         <div id="section3" class="section">
             <h2>My dearest Celia,</h2>
-
             <p>
             Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
 
-            I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheered just as loudly as I did the other times.<br><br>
+            I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheer just as loudly as I did the other times.<br><br>
 
             You definitely would be the greatest pilot of our generation.<br><br>
 
@@ -163,10 +246,17 @@ button:hover {
 
             <p class="strike">Edward</p>
             <p>Evelyn</p>
+
+            <button class="back-btn" onclick="nextSection(1)">Volver al inicio</button>
         </div>
 
     </div>
+</div>
 
+<!-- ALERTA PERSONALIZADA -->
+<div id="customAlert">
+    <p>Maybe read it again. 🤍</p>
+    <button onclick="closeAlert()">OK</button>
 </div>
 
 <script>
@@ -177,15 +267,23 @@ function checkPassword() {
         document.getElementById("content").classList.remove("hidden");
         document.getElementById("section1").style.display = "block";
     } else {
-        alert("Maybe read it again.");
+        document.getElementById("customAlert").classList.add("show");
     }
+}
+
+function closeAlert() {
+    document.getElementById("customAlert").classList.remove("show");
 }
 
 function nextSection(sectionNumber) {
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
     document.getElementById("section" + sectionNumber).style.display = "block";
 }
-</script>
 
+function goHome() {
+    document.getElementById("content").classList.add("hidden");
+    document.getElementById("login").classList.remove("hidden");
+}
+</script>
 </body>
 </html>
