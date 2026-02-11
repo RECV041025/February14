@@ -3,43 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <title>For You</title>
+
 <style>
 body {
-    background-color: #111;
-    color: #f5f5f5;
-    font-family: Georgia, serif;
+    margin: 0;
+    background: linear-gradient(135deg, #1a0000, #3b0a0a, #000);
+    color: #f8e9e9;
+    font-family: 'Georgia', serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
 }
 
 .container {
-    max-width: 650px;
+    max-width: 750px;
+    padding: 40px;
+}
+
+h2 {
+    color: #ffd6d6;
+}
+
+p {
+    line-height: 1.8;
+    font-size: 18px;
 }
 
 input {
-    padding: 10px;
+    padding: 12px;
     margin-top: 20px;
+    border-radius: 5px;
     border: none;
-    outline: none;
+    width: 250px;
 }
 
 button {
-    padding: 10px 20px;
-    margin-left: 10px;
+    padding: 12px 25px;
+    margin-top: 25px;
     border: none;
+    border-radius: 30px;
+    background-color: #8b0000;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: #b22222;
+    transform: scale(1.05);
 }
 
 .hidden {
     display: none;
 }
 
+.section {
+    display: none;
+    animation: fadeIn 1.2s ease forwards;
+}
+
 .strike {
     text-decoration: line-through;
-    opacity: 0.7;
+    opacity: 0.6;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.book-cover {
+    width: 200px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.3);
+}
+
+.hint {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffb3b3;
+    opacity: 0.8;
 }
 </style>
 </head>
@@ -47,63 +94,96 @@ button {
 <body>
 
 <div class="container">
+
+    <!-- LOGIN -->
     <div id="login">
-        <h2>If you know… you know. When you know... you know. </h2>
+        <h2>If you know… you know.</h2>
+        
+        <img src="https://images-na.ssl-images-amazon.com/images/I/81WojUxbbFL.jpg" class="book-cover">
+
+        <div class="hint">
+            The title of the first story you ever held in your hands.<br>
+            (The one that bent violently backward over the grass.)
+        </div>
+
         <input type="password" id="password" placeholder="Password">
+        <br>
         <button onclick="checkPassword()">Enter</button>
     </div>
 
+    <!-- CONTENT -->
     <div id="content" class="hidden">
-      
-<h2>My Dearest CeCe,</h2>
 
-        <p>
-        Please never forget that the sun rises and sets with your smile. At least to me it does. You're the only thing on this planet worth worshipping.<br><br>
+        <!-- SECTION 1 -->
+        <div id="section1" class="section">
+            <h2>My Dearest CeCe,</h2>
 
-        All my love,<br>
-        Edward.
-        </p>
+            <p>
+            Please never forget that the sun rises and sets with your smile. 
+            At least to me it does. You're the only thing on this planet worth worshipping.<br><br>
 
-        <br><br>
-        
-<p>
-        I am proud of you.<br>
-        Truly.<br><br>
+            All my love,<br>
+            Edward.
+            </p>
 
-        Not because of what we were.<br>
-        Not because of what we tried to be.<br>
-        But because of who you are becoming.<br><br>
+            <button onclick="nextSection(2)">Empecemos el recorrido</button>
+        </div>
 
-        There is no return hidden here.<br>
-        No expectation.<br>
-        Just gratitude.<br><br>
-      </p>
-      
-        <h2>My dearest Celia,</h2>
-      <p>
-        Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
+        <!-- SECTION 2 -->
+        <div id="section2" class="section">
+            <p>
+            I am proud of you.<br>
+            Truly.<br><br>
 
-        I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheer just as loudly as I did the other times.<br><br>
+            Not because of what we were.<br>
+            Not because of what we tried to be.<br>
+            But because of who you are becoming.<br><br>
 
-        You definitely would be the greatest pilot of our generation.<br><br>
+            There is no return hidden here.<br>
+            No expectation.<br>
+            Just gratitude.<br><br>
+            </p>
 
-        All my love,
-        </p>
+            <button onclick="nextSection(3)">Siguiente</button>
+        </div>
 
-        <p class="strike">Edward</p>
-        <p>Evelyn</p>
+        <!-- SECTION 3 -->
+        <div id="section3" class="section">
+            <h2>My dearest Celia,</h2>
+
+            <p>
+            Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
+
+            I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheer just as loudly as I did the other times.<br><br>
+
+            You definitely would be the greatest pilot of our generation.<br><br>
+
+            All my love,
+            </p>
+
+            <p class="strike">Edward</p>
+            <p>Evelyn</p>
+        </div>
+
     </div>
+
 </div>
 
 <script>
 function checkPassword() {
     var password = document.getElementById("password").value;
-    if(password === "violentbentbackwardsoverthegrass") {  // Cambia esta contraseña
+    if(password === "violentbentbackwardsoverthegrass") {
         document.getElementById("login").classList.add("hidden");
         document.getElementById("content").classList.remove("hidden");
+        document.getElementById("section1").style.display = "block";
     } else {
-        alert("Wrong password.");
+        alert("Maybe read it again.");
     }
+}
+
+function nextSection(sectionNumber) {
+    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    document.getElementById("section" + sectionNumber).style.display = "block";
 }
 </script>
 
