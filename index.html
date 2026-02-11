@@ -4,57 +4,32 @@
 <meta charset="UTF-8">
 <title>For You</title>
 <style>
-/* FONDO GENERAL */
 body {
     margin: 0;
-    background: url('bookcover.jpg') no-repeat center center fixed;
-    background-size: cover;
     font-family: 'Georgia', serif;
-    color: #f8e9e9;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    text-align: center;
-    overflow-x: hidden;
+    background-color: #000;
+    color: #fff;
 }
 
 /* CONTENEDOR CENTRAL */
 .container {
-    max-width: 750px;
-    padding: 40px;
-    background: rgba(0,0,0,0.65);
+    max-width: 800px;
+    padding: 30px;
+    background: rgba(0,0,0,0.7);
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(255,0,0,0.5);
-}
-
-/* CABECERAS */
-h2 {
-    color: #ffd6d6;
-    animation: fadeInMove 1s ease forwards;
-}
-
-/* PARRAFOS */
-p {
-    line-height: 1.8;
-    font-size: 18px;
-    animation: fadeInMove 1s ease forwards;
-}
-
-/* INPUT */
-input {
-    padding: 12px;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: none;
-    width: 250px;
+    text-align: center;
+    position: relative;
 }
 
 /* BOTONES AVIÓN */
 button {
     position: relative;
     padding: 12px 30px;
-    margin-top: 25px;
+    margin: 15px;
     border: none;
     border-radius: 50px;
     background-color: #b22222;
@@ -64,13 +39,10 @@ button {
     transition: 0.3s ease;
     overflow: hidden;
 }
-
 button:hover {
-    transform: scale(1.1) rotate(-5deg);
+    transform: scale(1.05);
     background-color: #ff4c4c;
 }
-
-/* ICONO AVIÓN QUE SE MUEVE */
 button:after {
     content: '✈';
     position: absolute;
@@ -79,61 +51,39 @@ button:after {
     transform: translateY(-50%);
     animation: fly 1.2s ease-in-out infinite alternate;
 }
-
 @keyframes fly {
     0% { right: 15px; transform: translateY(-50%) rotate(0deg);}
     50% { right: 10px; transform: translateY(-55%) rotate(10deg);}
     100% { right: 15px; transform: translateY(-50%) rotate(0deg);}
 }
 
-/* BOTONES DE VOLVER */
-.back-btn {
-    background-color: #ffd6d6;
-    color: #800000;
-}
+/* SECCIONES */
+.hidden { display: none; }
+.section { display: none; animation: fadeIn 1s ease forwards; }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-.back-btn:hover {
-    background-color: #ffb3b3;
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* SECCIONES OCULTAS */
-.hidden {
-    display: none;
-}
-
-.section {
-    display: none;
-    animation: fadeIn 1s ease forwards;
-    background: linear-gradient(180deg, rgba(255,0,0,0.15), rgba(255,192,203,0.15));
-    padding: 20px;
+/* VIDEO PORTADA CON TEXTO */
+.video-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
     border-radius: 15px;
-    margin-top: 20px;
 }
-
-/* FADE IN DE TEXTO */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+.video-container video {
+    width: 100%;
+    border-radius: 15px;
 }
-
-/* ANIMACION DE ENTRADA DEL TEXTO */
-@keyframes fadeInMove {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-/* TEXTO TACHADO */
-.strike {
-    text-decoration: line-through;
-    opacity: 0.6;
-}
-
-/* IMAGEN PORTADA */
-.book-cover {
-    width: 200px;
-    border-radius: 10px;
-    margin: 20px 0;
+.overlay-text {
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.4);
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    color: #fff;
+    font-size: 22px;
+    padding: 20px;
 }
 
 /* ALERTA PERSONALIZADA */
@@ -153,11 +103,7 @@ button:after {
     box-shadow: 0 0 50px #ff4c4c;
     transition: transform 0.5s ease;
 }
-
-#customAlert.show {
-    transform: translate(-50%, -50%) scale(1);
-}
-
+#customAlert.show { transform: translate(-50%, -50%) scale(1);}
 #customAlert button {
     margin-top: 20px;
     padding: 12px 25px;
@@ -166,124 +112,23 @@ button:after {
     background-color: #ff4c4c;
     color: white;
 }
+#customAlert button:hover { background-color: #b22222; }
 
-#customAlert button:hover {
-    background-color: #b22222;
+/* INPUT */
+input {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    width: 250px;
 }
 </style>
 </head>
-
 <body>
 <div class="container">
 
     <!-- LOGIN -->
     <div id="login">
-        <h2>If you know… you know.</h2>
-
-        <img src="bookcover.jpg" class="book-cover">
-
-        <div class="hint">
-            The title of the first story you ever held in your hands.<br>
-            (The one that bent violently backward over the grass.)
-        </div>
-
+        <h2>Enter your secret</h2>
         <input type="password" id="password" placeholder="Password">
         <br>
-        <button onclick="checkPassword()">Enter</button>
-    </div>
-
-    <!-- CONTENT -->
-    <div id="content" class="hidden">
-
-        <!-- SECTION 1 -->
-        <div id="section1" class="section">
-            <h2>My Dearest CeCe,</h2>
-            <p>
-            Please never forget that the sun rises and sets with your smile. 
-            At least to me it does. You're the only thing on this planet worth worshipping.<br><br>
-
-            All my love,<br>
-            Edward.
-            </p>
-
-            <button onclick="nextSection(2)">Empecemos el recorrido</button>
-            <br>
-            <button class="back-btn" onclick="goHome()">Volver al inicio</button>
-        </div>
-
-        <!-- SECTION 2 -->
-        <div id="section2" class="section">
-            <p>
-            I am proud of you.<br>
-            Truly.<br><br>
-
-            Not because of what we were.<br>
-            Not because of what we tried to be.<br>
-            But because of who you are becoming.<br><br>
-
-            There is no return hidden here.<br>
-            No expectation.<br>
-            Just gratitude.<br><br>
-            </p>
-
-            <button onclick="nextSection(3)">Siguiente</button>
-            <br>
-            <button class="back-btn" onclick="nextSection(1)">Volver al inicio</button>
-        </div>
-
-        <!-- SECTION 3 -->
-        <div id="section3" class="section">
-            <h2>My dearest Celia,</h2>
-            <p>
-            Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
-
-            I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheer just as loudly as I did the other times.<br><br>
-
-            You definitely would be the greatest pilot of our generation.<br><br>
-
-            All my love,
-            </p>
-
-            <p class="strike">Edward</p>
-            <p>Evelyn</p>
-
-            <button class="back-btn" onclick="nextSection(1)">Volver al inicio</button>
-        </div>
-
-    </div>
-</div>
-
-<!-- ALERTA PERSONALIZADA -->
-<div id="customAlert">
-    <p>Maybe read it again. 🤍</p>
-    <button onclick="closeAlert()">OK</button>
-</div>
-
-<script>
-function checkPassword() {
-    var password = document.getElementById("password").value;
-    if(password === "violentbentbackwardsoverthegrass") {
-        document.getElementById("login").classList.add("hidden");
-        document.getElementById("content").classList.remove("hidden");
-        document.getElementById("section1").style.display = "block";
-    } else {
-        document.getElementById("customAlert").classList.add("show");
-    }
-}
-
-function closeAlert() {
-    document.getElementById("customAlert").classList.remove("show");
-}
-
-function nextSection(sectionNumber) {
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section" + sectionNumber).style.display = "block";
-}
-
-function goHome() {
-    document.getElementById("content").classList.add("hidden");
-    document.getElementById("login").classList.remove("hidden");
-}
-</script>
-</body>
-</html>
+        <button onclick="checkPassword()">Enter</b
