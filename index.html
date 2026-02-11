@@ -104,7 +104,10 @@ button:after {
     box-shadow: 0 0 50px #ff4c4c;
     transition: transform 0.5s ease;
 }
-#customAlert.show { transform: translate(-50%, -50%) scale(1);}
+#customAlert.show { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1; /* <-- añade esto */
+}
 #customAlert button {
     margin-top: 20px;
     padding: 12px 25px;
