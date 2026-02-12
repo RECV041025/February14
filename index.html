@@ -192,8 +192,9 @@ input {
 <div id="sectionMenu" class="section">
     <h2>Welcome!</h2>
     <p>Where would you like to go?</p>
-    <button onclick="nextSection(1)">Iniciar recorrido por el website</button>
-    <button onclick="goJournal()">Ir al Journal</button>
+    
+<button onclick="navigateTo('section1')">Iniciar recorrido</button>
+<button onclick="navigateTo('sectionJournal')">Ir al Journal</button>
 
 </div>
 
@@ -202,7 +203,9 @@ input {
     <div class="video-container">
         <video id="video1" src="song1.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('video1'); nextSection(2)">Play & Continue</button>
+           <button onclick="navigateTo('section2')">Next</button>
+<button onclick="navigateTo('section1')">Back</button>
+
         </div>
     </div>
 </div>
@@ -212,8 +215,9 @@ input {
 <div id="section2" class="section">
     <h2>Hope you enjoy it</h2>
     <p>I'm sorry. I just wanted to tell you this…</p>
-  <button onclick="nextSection(3)">Next</button>
-    <button onclick="previousSection(2)">Back</button> <!-- nuevo -->
+ <button onclick="navigateTo('section3')">Next</button>
+<button onclick="navigateTo('section2')">Back</button>
+
 </div>
     
 <!-- SECTION 3 -->
@@ -225,8 +229,9 @@ input {
     Edward.
     </p>
     <p><i>No expectations.</i></p>
-    <button onclick="nextSection(4)">Next & Video</button>
-    <button onclick="previousSection(3)">Back</button> <!-- nuevo -->
+   <button onclick="navigateTo('section4')">Next</button>
+<button onclick="navigateTo('section3')">Back</button>
+
 </div>
 
 
@@ -235,8 +240,9 @@ input {
     <div class="video-container">
         <video id="video2" src="alwayslove.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('video2'); nextSection(5)">Play & Continue</button>
-            <button onclick="previousSection(4)">Back</button> <!-- nuevo -->
+           <button onclick="navigateTo('section5')">Next</button>
+<button onclick="navigateTo('section4')">Back</button>
+
         </div>
     </div>
 </div>
@@ -303,8 +309,9 @@ Just gratitude.<br><br>
 
 Take care.
 </p>
-    <button onclick="nextSection(6)">Next & Video</button>
-    <button onclick="previousSection(5)">Back</button> <!-- nuevo -->
+    <button onclick="navigateTo('section6')">Next</button>
+<button onclick="navigateTo('section5')">Back</button>
+
 </div>
 
     
@@ -313,8 +320,8 @@ Take care.
     <div class="video-container">
         <video id="video3" src="song2.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('video3'); nextSection(7)">Play & Continue</button>
-            <button onclick="previousSection(6)">Back</button> <!-- nuevo -->
+             <button onclick="navigateTo('section7')">Next</button>
+<button onclick="navigateTo('section6')">Back</button>
         </div>
     </div>
 </div>
@@ -334,16 +341,16 @@ Take care.
 
     <p class="strike">Edward</p>
     <p>Evelyn</p>
-   <button onclick="nextSection(8)">Next & Video</button>
-    <button onclick="previousSection(7)">Back</button> <!-- nuevo -->
+    <button onclick="navigateTo('section8')">Next</button>
+<button onclick="navigateTo('section7')">Back</button>
 </div>
  <!-- SECCIÓN 8: VIDEO FINAL -->
 <div id="section8" class="section">
     <div class="video-container">
         <video id="videoFinal" src="after_all_these_years.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('videoFinal'); nextSection(9)">Play & Continue</button>
-            <button onclick="previousSection(8)">Back</button> <!-- nuevo -->
+             <button onclick="navigateTo('section9')">Next</button>
+<button onclick="navigateTo('section8')">Back</button>
         </div>
     </div>
 </div>
@@ -369,13 +376,16 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
             Sometimes updates take a moment to appear.<br><br>
 
             </p>
-        <button onclick="goHome()">Back to Start</button>
-    <button onclick="previousSection(9)">Back</button> <!-- nuevo -->
+        <button onclick="navigateTo('sectionMenu')">Back to Menu</button>
+
+<button onclick="navigateTo('section9')">Back</button>
 </div>
 
   <!-- div JOURNAL -->
    <!-- SECTION JOURNAL -->
 <div id="sectionJournal" class="section">
+    <button onclick="navigateTo('sectionMenu')">Back to Menu</button>
+
     <h2>Journal</h2>
       <!-- INICIO DEL DIV DEL  JOURNAL -->
     <div class="journal">
@@ -437,6 +447,27 @@ function checkPassword() {
         document.getElementById("customAlert").classList.add("show");
     }
 }
+function navigateTo(sectionId){
+    // Oculta login
+    const login = document.getElementById("login");
+    if(login) login.style.display = "none";
+
+    // Oculta todas las secciones
+    document.querySelectorAll(".section").forEach(sec => {
+        sec.style.display = "none";
+    });
+
+    // Muestra la sección destino
+    const target = document.getElementById(sectionId);
+    if(target){
+        target.style.display = "block";
+    } else {
+        console.error("No existe la sección:", sectionId);
+    }
+
+    // ❌ NO pausamos videos aquí
+    // El audio continúa si no entramos a otra sección con video
+}
 
 
 // Cerrar alerta
@@ -444,55 +475,9 @@ function closeAlert() {
     document.getElementById("customAlert").classList.remove("show");
 }
 
-// CAMBIO DE SECCIONES
-function showSection(id){
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById(id).style.display = "block";
-}
 
-// BOTÓN ATRÁS
-function previousSection(current){
-    if(current === 'Journal'){
-        // Cierra todas las entradas y vuelve a la "vista general" del Journal
-        document.querySelectorAll(".entry-content").forEach(entry => entry.style.display = "none");
-        return; // se queda en la sección Journal
-    }
 
-    let prev = current - 1;
-    if(prev < 1) return;
-    showSection("section"+prev);
-}
 
-// VOLVER AL INICIO (MENÚ PRINCIPAL)
-function goHome(){
-    // Oculta todas las secciones
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-
-    // Muestra el menú principal
-    document.getElementById("sectionMenu").style.display = "block";
-
-    // Pausa y reinicia todos los videos
-    document.querySelectorAll("video").forEach(v => {
-        v.pause();
-        v.currentTime = 0;
-    });
-
-    // Cierra entradas del journal
-    document.querySelectorAll(".entry-content").forEach(entry => {
-        entry.style.display = "none";
-    });
-}
-
-//iral journal funcion
-    function goJournal(){
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("sectionJournal").style.display = "block";
-
-    // Asegura que empiece sin entradas abiertas
-    document.querySelectorAll(".entry-content").forEach(entry => {
-        entry.style.display = "none";
-    });
-}
 
 // REPRODUCIR VIDEO
 function playVideo(id){
@@ -507,12 +492,7 @@ function playVideo(id){
     vid.muted = false;
     vid.play();
 }
-    // para el menu
-    function nextSection(id){
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+id).style.display = "block";
-}
-
+  
 
 
 </script>
