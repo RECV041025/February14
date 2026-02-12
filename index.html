@@ -230,9 +230,13 @@ input {
     <h2>Welcome!</h2>
     <p>Where would you like to go?</p>
     
-<button onclick="navigateTo('section1')">Iniciar recorrido</button>
-<button onclick="navigateTo('sectionJournal')">Ir al Journal</button>
+<button onclick="navigateTo('section1')">Start here</button>
+<button onclick="navigateTo('sectionJournal')">Go to The Notebook</button>
+    <p>
+Tip: If you don’t see anything new on the page, press F5 a few times to refresh it properly. <br><br>
+            Sometimes updates take a moment to appear.<br><br>
 
+            </p>
 </div>
 
 <!-- SECTION 1 -->
@@ -438,7 +442,8 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
           <!-- entrada1 JOURNAL -->
         <div class="journal-entry">
 
-            <button class="entry-btn" onclick="toggleExclusiveEntry('entryJ1')">
+           <button type="button" class="entry-btn" onclick="toggleExclusiveEntry('entryJ1')">
+
                 Entry I — FLOWERS
             </button>
             <div id="entryJ1" class="entry-content">
@@ -461,7 +466,7 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
   <!-- final de las entradas NO BORRAR DIV SECTION JOURNAL -->
     </div>
 
-   <button onclick="navigateTo('sectionMenu')">Back to Menu</button>
+  
 
 
  
