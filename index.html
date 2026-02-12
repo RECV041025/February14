@@ -556,22 +556,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 <script>
-function toggleEntry(id) {
-    var entry = document.getElementById(id);
 
-    if (entry.style.display === "block") {
-        entry.style.display = "none";
-    } else {
-        entry.style.display = "block";
-    }
-}
-    function toggleExclusiveEntry(id) {
-    const allEntries = document.querySelectorAll(".entry-content");
-    allEntries.forEach(entry => {
-        if(entry.id !== id) {
-            entry.style.display = "none";
-        }
-    });
+   
 
     const current = document.getElementById(id);
     current.style.display = current.style.display === "block" ? "none" : "block";
@@ -603,6 +589,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 </script>
 
