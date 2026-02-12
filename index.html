@@ -167,6 +167,42 @@ input {
     font-size: 18px;
     padding: 15px 40px;
 }
+/* JOURNAL ACCORDION */
+.journal {
+    max-width: 700px;
+    margin: 40px auto;
+    text-align: left;
+}
+
+.entry {
+    margin-bottom: 15px;
+}
+
+.entry-btn {
+    width: 100%;
+    background: #7a1212;
+    border: none;
+    color: white;
+    padding: 18px 20px;
+    font-size: 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s ease;
+}
+
+.entry-btn:hover {
+    background: #a61c1c;
+}
+
+.entry-content {
+    display: none;
+    background: rgba(0,0,0,0.35);
+    padding: 20px;
+    border-radius: 0 0 15px 15px;
+    margin-top: -5px;
+    animation: fadeIn 0.5s ease;
+}
 
 
 </style>
@@ -203,6 +239,8 @@ input {
     <div class="video-container">
         <video id="video1" src="song1.mp4"></video>
         <div class="video-overlay">
+            <button onclick="playVideo('song1')">Play</button>
+
            <button onclick="navigateTo('section2')">Next</button>
 <button onclick="navigateTo('section1')">Back</button>
 
@@ -240,6 +278,8 @@ input {
     <div class="video-container">
         <video id="video2" src="alwayslove.mp4"></video>
         <div class="video-overlay">
+            <button onclick="playVideo('alwayslove')">Play</button>
+
            <button onclick="navigateTo('section5')">Next</button>
 <button onclick="navigateTo('section4')">Back</button>
 
@@ -320,6 +360,8 @@ Take care.
     <div class="video-container">
         <video id="video3" src="song2.mp4"></video>
         <div class="video-overlay">
+            <button onclick="playVideo('song2')">Play</button>
+
              <button onclick="navigateTo('section7')">Next</button>
 <button onclick="navigateTo('section6')">Back</button>
         </div>
@@ -349,6 +391,8 @@ Take care.
     <div class="video-container">
         <video id="videoFinal" src="after_all_these_years.mp4"></video>
         <div class="video-overlay">
+            <button onclick="playVideo('after_all_these_years')">Play</button>
+
              <button onclick="navigateTo('section9')">Next</button>
 <button onclick="navigateTo('section8')">Back</button>
         </div>
