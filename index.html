@@ -174,11 +174,11 @@ input {
     text-align: left;
 }
 
-.entry {
+.journal-entry {
     margin-bottom: 15px;
 }
 
-.entry-btn {
+.journal-entry .entry-btn {
     width: 100%;
     background: #7a1212;
     border: none;
@@ -191,11 +191,11 @@ input {
     transition: background 0.3s ease;
 }
 
-.entry-btn:hover {
+.journal-entry .entry-btn:hover {
     background: #a61c1c;
 }
 
-.entry-content {
+.journal-entry .entry-content {
     display: none;
     background: rgba(0,0,0,0.35);
     padding: 20px;
@@ -203,6 +203,7 @@ input {
     margin-top: -5px;
     animation: fadeIn 0.5s ease;
 }
+
 
 
 </style>
@@ -434,7 +435,8 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
       <!-- INICIO DEL DIV DEL  JOURNAL -->
     <div class="journal">
           <!-- entrada1 JOURNAL -->
-        <div class="entry">
+        <div class="journal-entry">
+
             <button class="entry-btn" onclick="toggleExclusiveEntry('entryJ1')">
                 Entry I — FLOWERS
             </button>
