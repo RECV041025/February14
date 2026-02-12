@@ -281,10 +281,13 @@ input {
 </div>
 
 <script>
+
 function checkPassword() {
     var password = document.getElementById("password").value;
     if(password === "violentbentbackwardsoverthegrass") {
+        // Ocultar login completo
         document.getElementById("login").style.display = "none";
+        // Mostrar la primera sección
         document.getElementById("section1").style.display = "block";
     } else {
         document.getElementById("customAlert").classList.add("show");
