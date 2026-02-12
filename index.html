@@ -442,12 +442,7 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
           <!-- entrada1 JOURNAL -->
         <div class="journal-entry">
 
-        <button
-    type="button"
-    class="entry-btn"
-    onclick="toggleExclusiveEntry('entryJ1'); return false;">
-
-
+      <div class="entry-btn" data-entry="entryJ1">
                 Entry I — FLOWERS
             </button>
             <div id="entryJ1" class="entry-content">
@@ -597,6 +592,18 @@ function playVideo(id){
 }
 </script>
 
+
+<script>
+document.querySelectorAll(".entry-btn").forEach(btn => {
+    btn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const id = this.dataset.entry;
+        toggleExclusiveEntry(id);
+    });
+});
+</script>
 
 </body>
 </html>
