@@ -20,6 +20,7 @@ body {
     text-align: center;
     position: relative;
 }
+ 
 
 /* BOTONES AVIÓN */
 button {
@@ -118,13 +119,8 @@ input {
 /* SECCIONES */
 .hidden { display: none; }
 .section { 
-    display: none;
+    display: none; 
     margin-top: 40px;
-}
-
-.section.active {
-    display: block;
-    animation: fadeIn 1s ease forwards;
 }
 
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
@@ -204,10 +200,14 @@ input {
     display: none;
     background: rgba(0,0,0,0.35);
     padding: 20px;
-    border-radius: 0 0 15px 15px;
-    margin-top: -5px;
-    animation: fadeIn 0.5s ease;
+    border-radius: 15px;
+    margin-top: 10px;
+    color: white;
 }
+.entry-content p {
+    color: white;
+}
+
 
 
 
@@ -506,24 +506,22 @@ function checkPassword() {
 }
 function navigateTo(sectionId){
 
+    // Ocultar login
     const login = document.getElementById("login");
     if(login) login.style.display = "none";
 
-    // Quitar active a todas
-    document.querySelectorAll(".section").forEach(sec => {
-        sec.classList.remove("active");
+    // Ocultar todas las secciones
+    const sections = document.querySelectorAll(".section");
+    sections.forEach(sec => {
+        sec.style.display = "none";
     });
 
-    // Activar solo la sección correcta
+    // Mostrar solo la que corresponde
     const target = document.getElementById(sectionId);
     if(target){
-        target.classList.add("active");
-    } else {
-        console.error("No existe la sección:", sectionId);
+        target.style.display = "block";
     }
 }
-
-
 
 // Cerrar alerta
 function closeAlert() {
