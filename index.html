@@ -193,7 +193,8 @@ input {
     <h2>Welcome!</h2>
     <p>Where would you like to go?</p>
     <button onclick="nextSection(1)">Iniciar recorrido por el website</button>
-    <button onclick="nextSection(8)">Ir al Journal</button>
+    <button onclick="goJournal()">Ir al Journal</button>
+
 </div>
 
 <!-- SECTION 1 -->
@@ -403,8 +404,9 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
   <!-- final de las entradas NO BORRAR DIV SECTION JOURNAL -->
     </div>
 
-    <button onclick="previousSection('Journal')">Back</button>
-    <button onclick="goHome()">Back to Start</button>
+   <button onclick="goHome()">Back to Menu</button>
+
+ 
       <!-- FINAL DEL DIV DEL JOURNAL -->
 </div>
 
@@ -465,19 +467,32 @@ function previousSection(current){
 function goHome(){
     // Oculta todas las secciones
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    // Muestra el login nuevamente
-    document.getElementById("login").style.display = "block";
 
-    // Pausar todos los videos
+    // Muestra el menú principal
+    document.getElementById("sectionMenu").style.display = "block";
+
+    // Pausa y reinicia todos los videos
     document.querySelectorAll("video").forEach(v => {
         v.pause();
         v.currentTime = 0;
     });
 
-    // Cierra todas las entradas del Journal
-    document.querySelectorAll(".entry-content").forEach(entry => entry.style.display = "none");
+    // Cierra entradas del journal
+    document.querySelectorAll(".entry-content").forEach(entry => {
+        entry.style.display = "none";
+    });
 }
 
+//iral journal funcion
+    function goJournal(){
+    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    document.getElementById("sectionJournal").style.display = "block";
+
+    // Asegura que empiece sin entradas abiertas
+    document.querySelectorAll(".entry-content").forEach(entry => {
+        entry.style.display = "none";
+    });
+}
 
 // REPRODUCIR VIDEO
 function playVideo(id){
@@ -498,17 +513,7 @@ function playVideo(id){
     document.getElementById("section"+id).style.display = "block";
 }
 
-function previousSection(current){
-    if(current === 'Journal'){
-        document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-        document.getElementById("section8").style.display = "block"; // Regresa al final antes del journal
-        return;
-    }
-    let prev = current - 1;
-    if(prev < 1) return;
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+prev).style.display = "block";
-}
+
 
 </script>
 <script>
