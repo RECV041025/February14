@@ -168,6 +168,14 @@ input {
     font-size: 18px;
     padding: 15px 40px;
 }
+.journal-day {
+    display: none;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 10px;
+    line-height: 1.5;
+}
 
 
 </style>
@@ -403,21 +411,19 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
 
 
  
-   <!-- SECTION JOURNAL -->
+  <!-- SECTION JOURNAL -->
 <div id="sectionJournal" class="section">
+    <h2>The Notebook</h2>
+    <button type="button" onclick="showJournalButtons()">Enter</button>
 
-    <button type="button" onclick="navigateTo('sectionMenu')">
-        Back to Menu
-    </button>
+    <div id="journalButtons" style="display:none; margin-top:20px;">
+        <button type="button" onclick="showJournalDay('day1')">12 de febrero 2026</button>
+        <button type="button" onclick="showJournalDay('day2')">13 de febrero 2026</button>
+        <button type="button" onclick="showJournalDay('day3')">14 de febrero 2026</button>
+    </div>
 
-    <h2>THE NOTEBOOK</h2>
-
-    <button type="button" onclick="showJournal()">
-        Enter
-    </button>
-
-    <div id="journalText" style="display:none; margin-top:30px; max-width:700px; margin-left:auto; margin-right:auto; text-align:left;">
-
+    <div id="day1" class="journal-day">
+       
         <p>
         Today I sent you flowers. Honestly, I’m not sure if they’ll arrive at your house — I never knew your address in Tijuana, so I sent them to your home. I hope you like them.<br><br>
 
@@ -431,8 +437,16 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
         </p>
 
     </div>
+    <div id="day2" class="journal-day">
+        <p>Texto del 13 de febrero 2026. Hoy estudié francés y practiqué mis videos.</p>
+    </div>
+    <div id="day3" class="journal-day">
+        <p>Texto del 14 de febrero 2026. Hoy descansé y preparé el próximo proyecto de la página.</p>
+    </div>
 
+    <button type="button" onclick="navigateTo('sectionMenu')">Back to Menu</button>
 </div>
+
 
 
 <!-- div del final, NO BORRAR -->
@@ -491,8 +505,19 @@ function closeAlert() {
     document.getElementById("customAlert").classList.remove("show");
 }
 
+//botenesssssssssssssssssssss
 
+// Mostrar botones de los días
+function showJournalButtons(){
+    document.getElementById("journalButtons").style.display = "block";
+}
 
+// Mostrar solo el día seleccionado
+function showJournalDay(dayId){
+    document.querySelectorAll(".journal-day").forEach(d => d.style.display = "none");
+    const target = document.getElementById(dayId);
+    if(target) target.style.display = "block";
+}
 
 
 
