@@ -195,7 +195,7 @@ input {
     <div class="login-background">
         <img src="bookcover2.jpg" alt="Book Cover">
         <div class="login-overlay">
-            <p id="lastUpdated" style="margin-top:30px; font-size:14px; opacity:0.7;"></p>
+            <p id="lastUpdated" style="margin-top:30px; font-size:20px; opacity:0.7;"></p>
 
             <h2>If you know… you know. When you know... you know.</h2>
             <input type="password" id="password" placeholder="password">
@@ -338,16 +338,27 @@ Take care.
 
     <p class="strike">Edward</p>
     <p>Evelyn</p>
-    <button onclick="goHome()">Back to Start</button>
+   <button onclick="nextSection(8)">Next & Video</button>
     <button onclick="previousSection(7)">Back</button> <!-- nuevo -->
 </div>
 
     <!-- SECCIÓN 8: VIDEO FINAL -->
 <div id="section8" class="section">
     <div class="video-container">
-        <video id="videoFinal" src="after_all_these_years.mp4" muted></video>
+        <video id="videoFinal" src="after_all_these_years.mp4"></video>
         <div class="video-overlay">
-            <p style="margin-bottom: 20px;">
+            <button onclick="playVideo('videoFinal'); nextSection(9)">Play & Continue</button>
+            <button onclick="previousSection(8)">Back</button> <!-- nuevo -->
+        </div>
+    </div>
+</div>
+
+            <!-- SECTION 9 -->
+<div id="section9" class="section">
+    <h2>THE NOTEBOOK</h2>
+    
+   
+            <p>
             I’ve decided to modernize The Notebook a little — my daily letters will stay here.<br><br>
 
 You’ll be able to come back to this same page and read me whenever you want. I’m not forcing anything. Only when you feel alone and want to read me… I’ll be here.<br><br>
@@ -362,10 +373,13 @@ Maybe not for you.<br><br>
 But I will always be yours, even if you are never mine again.<br><br>
 
 
-            </p>
-           <button onclick="playVideo('video4'); nextSection(8)">Play & Continue</button>
-            <div class="journal">
+            <p>
+           <button onclick="nextSection(10)">Next & Video</button>
+    <button onclick="previousSection(9)">Back</button> <!-- nuevo -->
+</div>
 
+      <!-- SECTION 10 -->
+    <div id="section10" class="journal">
     <h2>Journal</h2>
 
     <div class="entry">
@@ -397,11 +411,9 @@ But I will always be yours, even if you are never mine again.<br><br>
         </div>
     </div>
 
-</div>
 
-        </div>
-    </div>
-    <button onclick="previousSection(8)">Back</button>
+
+    <button onclick="previousSection(10)">Back</button>
     <button onclick="goHome()">Back to Start</button>
 </div>
 
