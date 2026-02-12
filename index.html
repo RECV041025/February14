@@ -443,32 +443,41 @@ function closeAlert() {
 }
 
 // CAMBIO DE SECCIONES
-function nextSection(sectionNumber){
+function showSection(id){
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+sectionNumber).style.display = "block";
+    document.getElementById(id).style.display = "block";
 }
 
-// REGRESAR A SECCIÓN ANTERIOR
-function previousSection(currentSection){
-    let prev = currentSection - 1;
+// BOTÓN ATRÁS
+function previousSection(current){
+    if(current === 'Journal'){
+        // Cierra todas las entradas y vuelve a la "vista general" del Journal
+        document.querySelectorAll(".entry-content").forEach(entry => entry.style.display = "none");
+        return; // se queda en la sección Journal
+    }
+
+    let prev = current - 1;
     if(prev < 1) return;
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+prev).style.display = "block";
-
-    // No pausar videos aquí
+    showSection("section"+prev);
 }
 
-// VOLVER AL INICIO
+// VOLVER AL INICIO (MENÚ PRINCIPAL)
 function goHome(){
+    // Oculta todas las secciones
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("login").classList.remove("hidden");
+    // Muestra el login nuevamente
+    document.getElementById("login").style.display = "block";
 
     // Pausar todos los videos
     document.querySelectorAll("video").forEach(v => {
         v.pause();
         v.currentTime = 0;
     });
+
+    // Cierra todas las entradas del Journal
+    document.querySelectorAll(".entry-content").forEach(entry => entry.style.display = "none");
 }
+
 
 // REPRODUCIR VIDEO
 function playVideo(id){
@@ -528,6 +537,17 @@ function toggleEntry(id) {
     } else {
         entry.style.display = "block";
     }
+}
+    function toggleExclusiveEntry(id) {
+    const allEntries = document.querySelectorAll(".entry-content");
+    allEntries.forEach(entry => {
+        if(entry.id !== id) {
+            entry.style.display = "none";
+        }
+    });
+
+    const current = document.getElementById(id);
+    current.style.display = current.style.display === "block" ? "none" : "block";
 }
 </script>
 
