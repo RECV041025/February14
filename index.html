@@ -442,7 +442,7 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
           <!-- entrada1 JOURNAL -->
         <div class="journal-entry">
 
-      <div class="entry-btn" data-entry="entryJ1">
+      <button class="entry-btn" data-entry="entryJ1">
                 Entry I — FLOWERS
             </button>
             <div id="entryJ1" class="entry-content">
@@ -538,21 +538,16 @@ function closeAlert() {
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const lastModified = document.lastModified;
-    const date = new Date(lastModified);
-
-    const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    };
-
-    document.getElementById("lastUpdated").innerHTML =
-        "Last updated: " + date.toLocaleDateString("en-US", options);
+    document.querySelectorAll(".entry-btn").forEach(btn => {
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const id = this.dataset.entry;
+            toggleExclusiveEntry(id);
+        });
+    });
 });
-    
+
 </script>
 <script>
 function toggleEntry(id) {
