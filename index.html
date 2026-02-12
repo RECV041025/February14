@@ -476,41 +476,50 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
 function checkPassword() {
     var password = document.getElementById("password").value;
     if(password === "violentbentbackwardsoverthegrass") {
-        // Ocultar login completo
         document.getElementById("login").style.display = "none";
-        // Mostrar menú de opciones primero
         document.getElementById("sectionMenu").style.display = "block";
     } else {
         document.getElementById("customAlert").classList.add("show");
     }
 }
 
-
-// Cerrar alerta
+// CERRAR ALERTA
 function closeAlert() {
     document.getElementById("customAlert").classList.remove("show");
 }
 
-// CAMBIO DE SECCIONES
+// IR A UNA SECCIÓN POR ID O NUMERO
+function showSection(id) {
+    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    document.getElementById(id).style.display = "block";
+
+    // Pausar todos los videos
+    document.querySelectorAll("video").forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+    });
+}
+
+// IR A LA SIGUIENTE SECCIÓN (NUMERO)
 function nextSection(sectionNumber){
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+sectionNumber).style.display = "block";
+    showSection("section"+sectionNumber);
 }
 
-// REGRESAR A SECCIÓN ANTERIOR
-function previousSection(currentSection){
-    let prev = currentSection - 1;
+// VOLVER A LA SECCIÓN ANTERIOR
+function previousSection(current){
+    if(current === 'Journal'){
+        showSection("section8"); // Regresa al final antes del journal
+        return;
+    }
+    let prev = current - 1;
     if(prev < 1) return;
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+prev).style.display = "block";
-
-    // No pausar videos aquí
+    showSection("section"+prev);
 }
 
-// VOLVER AL INICIO
+// VOLVER AL MENU INICIAL
 function goHome(){
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("login").classList.remove("hidden");
+    document.getElementById("sectionMenu").style.display = "block";
 
     // Pausar todos los videos
     document.querySelectorAll("video").forEach(v => {
@@ -521,7 +530,6 @@ function goHome(){
 
 // REPRODUCIR VIDEO
 function playVideo(id){
-    // Pausar todos los videos primero
     document.querySelectorAll("video").forEach(v => {
         if(v.id !== id) {
             v.pause();
@@ -532,29 +540,13 @@ function playVideo(id){
     vid.muted = false;
     vid.play();
 }
-    // para el menu
-    function nextSection(id){
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+id).style.display = "block";
-}
 
-function previousSection(current){
-    if(current === 'Journal'){
-        document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-        document.getElementById("section8").style.display = "block"; // Regresa al final antes del journal
-        return;
-    }
-    let prev = current - 1;
-    if(prev < 1) return;
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+prev).style.display = "block";
-}
-    //FUNCION DEL ACORDEON
+// ACORDEÓN EXCLUSIVO DEL JOURNAL
 function toggleExclusiveEntry(id) {
     const allEntries = document.querySelectorAll(".entry-content");
     allEntries.forEach(entry => {
         if(entry.id !== id) {
-            entry.style.display = "none"; // cerrar todas menos la seleccionada
+            entry.style.display = "none";
         }
     });
 
@@ -562,8 +554,7 @@ function toggleExclusiveEntry(id) {
     current.style.display = current.style.display === "block" ? "none" : "block";
 }
 
-</script>
-    <script>
+// MOSTRAR FECHA DE ÚLTIMA ACTUALIZACIÓN
 document.addEventListener("DOMContentLoaded", function() {
     const lastModified = document.lastModified;
     const date = new Date(lastModified);
@@ -579,17 +570,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("lastUpdated").innerHTML =
         "Last updated: " + date.toLocaleDateString("en-US", options);
 });
-</script>
-<script>
-function toggleEntry(id) {
-    var entry = document.getElementById(id);
 
-    if (entry.style.display === "block") {
-        entry.style.display = "none";
-    } else {
-        entry.style.display = "block";
-    }
-}
 </script>
 
 
