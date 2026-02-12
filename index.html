@@ -166,6 +166,8 @@ input {
     <div class="login-background">
         <img src="bookcover2.jpg" alt="Book Cover">
         <div class="login-overlay">
+            <p id="lastUpdated" style="margin-top:30px; font-size:14px; opacity:0.7;"></p>
+
             <h2>If you know… you know. When you know... you know.</h2>
             <input type="password" id="password" placeholder="password">
             <button onclick="checkPassword()">Enter</button>
@@ -311,6 +313,69 @@ Take care.
     <button onclick="previousSection(7)">Back</button> <!-- nuevo -->
 </div>
 
+    <!-- SECCIÓN 8: VIDEO FINAL -->
+<div id="section8" class="section">
+    <div class="video-container">
+        <video id="videoFinal" src="after_all_these_years.mp4" muted></video>
+        <div class="video-overlay">
+            <p style="margin-bottom: 20px;">
+            I’ve decided to modernize The Notebook a little — my daily letters will stay here.<br><br>
+
+You’ll be able to come back to this same page and read me whenever you want. I’m not forcing anything. Only when you feel alone and want to read me… I’ll be here.<br><br>
+
+I didn’t want to admit it, but I think I will always have a soft spot for you.<br><br>
+By now, I think you already know who owns this website.<br><br>
+
+So I need to tell you — when I saw you again, you have no idea how much I had to hold myself back from running to you, hugging you, and telling you how much I missed you.<br><br>
+
+Literally… an AFTER ALL THESE YEARS for me.<br><br>
+Maybe not for you.<br><br>
+But I will always be yours, even if you are never mine again.<br><br>
+
+ <i>
+            Tip: If you don’t see anything new on the page, press F5 a few times to refresh it properly. 
+            Sometimes updates take a moment to appear.
+            </i>
+            </p>
+           <button onclick="playVideo('video4'); nextSection(8)">Play & Continue</button>
+            <div class="journal">
+
+    <h2>Journal</h2>
+
+    <div class="entry">
+        <button class="entry-btn" onclick="toggleEntry('entry1')">
+            Entry I — After All These Years
+        </button>
+        <div id="entry1" class="entry-content">
+            <p>
+            I’ve decided to modernize The Notebook a little — my daily letters will stay here. <br><br>
+
+            You’ll be able to come back to this same page and read me whenever you want. 
+            I’m not forcing anything. Only when you feel alone and want to read me… I’ll be here. <br><br>
+
+            I didn’t want to admit it, but I think I will always have a soft spot for you. 
+            By now, I think you already know who owns this website. <br><br>
+
+            When I saw you again, you have no idea how much I had to hold myself back 
+            from running to you, hugging you, and telling you how much I missed you. <br><br>
+
+            Literally… <b>AFTER ALL THESE YEARS</b> for me.  
+            Maybe not for you.  
+            But I will always be yours, even if you are never mine again. <br><br>
+
+           
+            </p>
+        </div>
+    </div>
+
+</div>
+
+        </div>
+    </div>
+    <button onclick="previousSection(8)">Back</button>
+    <button onclick="goHome()">Back to Start</button>
+</div>
+
 </div>
 
 <!-- ALERT -->
@@ -365,29 +430,40 @@ function previousSection(currentSection){
 
 // VOLVER AL INICIO
 function goHome(){
+    // Ocultar secciones
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    // Mostrar login y portada
     document.getElementById("login").classList.remove("hidden");
 
-    // pausar todos los videos cuando regresas al login
+    // Reiniciar videos
     document.querySelectorAll("video").forEach(v => {
         v.pause();
         v.currentTime = 0;
     });
-}
 
-// REPRODUCIR VIDEO
-function playVideo(id){
-    // Pausar todos los videos primero
-    document.querySelectorAll("video").forEach(v => {
-        v.pause();
-        v.currentTime = 0;
-    });
-    // Reproducir solo el seleccionado
-    var vid = document.getElementById(id);
-    vid.muted = false;
-    vid.play();
+    // Forzar que la portada y overlay se vean correctamente
+    const loginBg = document.querySelector("#login .login-background");
+    loginBg.style.display = "block";
+    const overlay = document.querySelector("#login .login-overlay");
+    overlay.style.display = "flex";
 }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const lastModified = document.lastModified;
+    const date = new Date(lastModified);
 
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+
+    document.getElementById("lastUpdated").innerHTML =
+        "Last updated: " + date.toLocaleDateString("en-US", options);
+});
 </script>
 
 </body>
