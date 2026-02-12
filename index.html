@@ -367,7 +367,7 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
             Sometimes updates take a moment to appear.<br><br>
 
             </p>
-           <button onclick="nextSection(10)">Next & Video</button>
+        <button onclick="goHome()">Back to Start</button>
     <button onclick="previousSection(9)">Back</button> <!-- nuevo -->
 </div>
 
@@ -492,5 +492,35 @@ function previousSection(current){
 }
 
 </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const lastModified = document.lastModified;
+    const date = new Date(lastModified);
+
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+
+    document.getElementById("lastUpdated").innerHTML =
+        "Last updated: " + date.toLocaleDateString("en-US", options);
+});
+</script>
+<script>
+function toggleEntry(id) {
+    var entry = document.getElementById(id);
+
+    if (entry.style.display === "block") {
+        entry.style.display = "none";
+    } else {
+        entry.style.display = "block";
+    }
+}
+</script>
+
+
 </body>
 </html>
