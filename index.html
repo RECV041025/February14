@@ -536,6 +536,24 @@ function closeAlert() {
 
 
 </script>
+    <script>
+function toggleExclusiveEntry(id) {
+    const allEntries = document.querySelectorAll(".entry-content");
+
+    allEntries.forEach(entry => {
+        if (entry.id !== id) {
+            entry.style.display = "none";
+        }
+    });
+
+    const current = document.getElementById(id);
+    if (!current) return;
+
+    current.style.display =
+        current.style.display === "block" ? "none" : "block";
+}
+</script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const lastModified = document.lastModified;
@@ -555,14 +573,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
 
 </script>
-<script>
 
-   
-
-    const current = document.getElementById(id);
-    current.style.display = current.style.display === "block" ? "none" : "block";
-}
-</script>
 <script>
 function playVideo(id){
     document.querySelectorAll("video").forEach(v => {
