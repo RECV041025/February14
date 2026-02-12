@@ -154,6 +154,19 @@ input {
     text-decoration: line-through;
     opacity: 0.7;
 }
+    /* ESTILO DE MENU */
+#sectionMenu h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+#sectionMenu p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+#sectionMenu button {
+    font-size: 18px;
+    padding: 15px 40px;
+}
 
 </style>
 </head>
@@ -172,6 +185,14 @@ input {
             <button onclick="checkPassword()">Enter</button>
         </div>
     </div>
+</div>
+
+    <!-- MENU -->
+<div id="sectionMenu" class="section">
+    <h2>Welcome!</h2>
+    <p>Where would you like to go?</p>
+    <button onclick="nextSection(1)">Iniciar recorrido por el website</button>
+    <button onclick="nextSection(8)">Ir al Journal</button>
 </div>
 
 <!-- SECTION 1 -->
@@ -342,13 +363,51 @@ So I need to tell you — when I saw you again, you have no idea how much I had 
 Literally… an AFTER ALL THESE YEARS for me.<br><br>
 Maybe not for you.<br><br>
 But I will always be yours, even if you are never mine again.<br><br>
-
+Tip: If you don’t see anything new on the page, press F5 a few times to refresh it properly. <br><br>
+            Sometimes updates take a moment to appear.<br><br>
 
             </p>
            <button onclick="nextSection(10)">Next & Video</button>
     <button onclick="previousSection(9)">Back</button> <!-- nuevo -->
 </div>
 
+/* div para el journal */ 
+    <!-- SECTION JOURNAL -->
+<div id="sectionJournal" class="section">
+    <h2>Journal</h2>
+    <div class="journal">
+        <div class="entry">
+            <button class="entry-btn" onclick="toggleEntry('entryJ1')">
+                Entry I — After All These Years
+            </button>
+            <div id="entryJ1" class="entry-content">
+                <p>
+                I’ve decided to modernize The Notebook a little — my daily letters will stay here. <br><br>
+
+                You’ll be able to come back to this same page and read me whenever you want. 
+                I’m not forcing anything. Only when you feel alone and want to read me… I’ll be here. <br><br>
+
+                I didn’t want to admit it, but I think I will always have a soft spot for you. 
+                By now, I think you already know who owns this website. <br><br>
+
+                When I saw you again, you have no idea how much I had to hold myself back 
+                from running to you, hugging you, and telling you how much I missed you. <br><br>
+
+                Literally… <b>AFTER ALL THESE YEARS</b> for me.  
+                Maybe not for you.  
+                But I will always be yours, even if you are never mine again. <br><br>
+
+                <i>
+                Tip: If you don’t see anything new on the page, press F5 a few times to refresh it properly. 
+                Sometimes updates take a moment to appear.
+                </i>
+                </p>
+            </div>
+        </div>
+    </div>
+    <button onclick="previousSection('Journal')">Back</button>
+    <button onclick="goHome()">Back to Start</button>
+</div>
 
 //este es el div del final-----
 </div>
@@ -368,12 +427,15 @@ But I will always be yours, even if you are never mine again.<br><br>
 function checkPassword() {
     var password = document.getElementById("password").value;
     if(password === "violentbentbackwardsoverthegrass") {
-        document.getElementById("login").classList.add("hidden");
-        document.getElementById("section1").style.display = "block";
+        // Ocultar login completo
+        document.getElementById("login").style.display = "none";
+        // Mostrar menú de opciones primero
+        document.getElementById("sectionMenu").style.display = "block";
     } else {
         document.getElementById("customAlert").classList.add("show");
     }
 }
+
 
 // Cerrar alerta
 function closeAlert() {
@@ -421,6 +483,24 @@ function playVideo(id){
     vid.muted = false;
     vid.play();
 }
+    // para el menu
+    function nextSection(id){
+    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    document.getElementById("section"+id).style.display = "block";
+}
+
+function previousSection(current){
+    if(current === 'Journal'){
+        document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+        document.getElementById("section8").style.display = "block"; // Regresa al final antes del journal
+        return;
+    }
+    let prev = current - 1;
+    if(prev < 1) return;
+    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+    document.getElementById("section"+prev).style.display = "block";
+}
+
 </script>
 </body>
 </html>
