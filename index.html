@@ -168,49 +168,6 @@ input {
     font-size: 18px;
     padding: 15px 40px;
 }
-/* JOURNAL ACCORDION */
-.journal {
-    max-width: 700px;
-    margin: 40px auto;
-    text-align: left;
-}
-
-.journal-entry {
-    margin-bottom: 15px;
-}
-
-.journal-entry .entry-btn {
-    width: 100%;
-    background: #7a1212;
-    border: none;
-    color: white;
-    padding: 18px 20px;
-    font-size: 18px;
-    border-radius: 15px;
-    cursor: pointer;
-    text-align: left;
-    transition: background 0.3s ease;
-}
-
-.journal-entry .entry-btn:hover {
-    background: #a61c1c;
-}
-
-.journal-entry .entry-content {
-    display: none;
-  background: black !important;
-    color: white !important;
-    padding: 20px;
-    border-radius: 15px;
-    margin-top: 10px;
-    color: white;
-}
-    
-.entry-content p {
-    color: white;
-}
-
-
 
 
 </style>
@@ -227,7 +184,7 @@ input {
 
             <h2>If you know… you know. When you know... you know.</h2>
             <input type="password" id="password" placeholder="password">
-            <button onclick="checkPassword()">Enter</button>
+            <button type="button" onclick="checkPassword()">Enter</button>
         </div>
     </div>
 </div>
@@ -237,8 +194,8 @@ input {
     <h2>Welcome!</h2>
     <p>Where would you like to go?</p>
     
-<button onclick="navigateTo('section1')">Start here</button>
-<button onclick="navigateTo('sectionJournal')">Go to The Notebook</button>
+<button type="button" onclick="navigateTo('section1')">Start here</button>
+<button type="button" onclick="navigateTo('sectionJournal')">Go to The Notebook</button>
     <p>
 Tip: If you don’t see anything new on the page, press F5 a few times to refresh it properly. <br><br>
             Sometimes updates take a moment to appear.<br><br>
@@ -251,10 +208,10 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
     <div class="video-container">
         <video id="video1" src="song1.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('video1')">Play</button>
+            <button type="button" onclick="playVideo('video1')">Play</button>
 
-           <button onclick="navigateTo('section2')">Next</button>
-<button onclick="navigateTo('sectionMenu')">Back</button>
+           <button type="button" onclick="navigateTo('section2')">Next</button>
+<button type="button" onclick="navigateTo('sectionMenu')">Back</button>
 
 
         </div>
@@ -266,8 +223,8 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
 <div id="section2" class="section">
     <h2>Hope you enjoy it</h2>
     <p>I'm sorry. I just wanted to tell you this…</p>
- <button onclick="navigateTo('section3')">Next</button>
-<button onclick="navigateTo('section1')">Back</button>
+ <button type="button" onclick="navigateTo('section3')">Next</button>
+<button type="button" onclick="navigateTo('section1')">Back</button>
 
 </div>
     
@@ -280,8 +237,8 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
     Edward.
     </p>
     <p><i>No expectations.</i></p>
-   <button onclick="navigateTo('section4')">Next</button>
-<button onclick="navigateTo('section2')">Back</button>
+   <button type="button" onclick="navigateTo('section4')">Next</button>
+<button type="button" onclick="navigateTo('section2')">Back</button>
 
 </div>
 
@@ -291,10 +248,10 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
     <div class="video-container">
         <video id="video2" src="alwayslove.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('video2')">Play</button>
+            <button type="button" onclick="playVideo('video2')">Play</button>
 
-           <button onclick="navigateTo('section5')">Next</button>
-<button onclick="navigateTo('section3')">Back</button>
+           <button type="button" onclick="navigateTo('section5')">Next</button>
+<button type="button"onclick="navigateTo('section3')">Back</button>
 
         </div>
     </div>
@@ -362,8 +319,8 @@ Just gratitude.<br><br>
 
 Take care.
 </p>
-    <button onclick="navigateTo('section6')">Next</button>
-<button onclick="navigateTo('section4')">Back</button>
+    <button type="button" onclick="navigateTo('section6')">Next</button>
+<button type="button" onclick="navigateTo('section4')">Back</button>
 
 </div>
 
@@ -373,10 +330,10 @@ Take care.
     <div class="video-container">
         <video id="video3" src="song2.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('video3')">Play</button>
+            <button type="button" onclick="playVideo('video3')">Play</button>
 
-             <button onclick="navigateTo('section7')">Next</button>
-<button onclick="navigateTo('section5')">Back</button>
+             <button type="button" onclick="navigateTo('section7')">Next</button>
+<button type="button" onclick="navigateTo('section5')">Back</button>
         </div>
     </div>
 </div>
@@ -396,18 +353,18 @@ Take care.
 
     <p class="strike">Edward</p>
     <p>Evelyn</p>
-    <button onclick="navigateTo('section8')">Next</button>
-<button onclick="navigateTo('section6')">Back</button>
+    <button type="button" onclick="navigateTo('section8')">Next</button>
+<button type="button" onclick="navigateTo('section6')">Back</button>
 </div>
  <!-- SECCIÓN 8: VIDEO FINAL -->
 <div id="section8" class="section">
     <div class="video-container">
         <video id="videoFinal" src="after_all_these_years.mp4"></video>
         <div class="video-overlay">
-            <button onclick="playVideo('videoFinal')">Play</button>
+            <button type="button" onclick="playVideo('videoFinal')">Play</button>
 
-             <button onclick="navigateTo('section9')">Next</button>
-<button onclick="navigateTo('section7')">Back</button>
+             <button type="button" onclick="navigateTo('section9')">Next</button>
+<button type="button" onclick="navigateTo('section7')">Back</button>
         </div>
     </div>
 </div>
@@ -433,55 +390,50 @@ Tip: If you don’t see anything new on the page, press F5 a few times to refres
             Sometimes updates take a moment to appear.<br><br>
 
             </p>
-        <button onclick="navigateTo('sectionMenu')">Back to Menu</button>
+        <button type="button" onclick="navigateTo('sectionMenu')">Back to Menu</button>
 
-<button onclick="navigateTo('section8')">Back</button>
+<button type="button" onclick="navigateTo('section8')">Back</button>
+    <button type="button" onclick="navigateTo('sectionJournal')">
+
+
 </div>
 
   <!-- div JOURNAL -->
    <!-- SECTION JOURNAL -->
-<div id="sectionJournal" class="section">
-    <button onclick="navigateTo('sectionMenu')">Back to Menu</button>
-
-    <h2>Journal</h2>
-      <!-- INICIO DEL DIV DEL  JOURNAL -->
-    <p style="opacity:0.8; margin-bottom:20px;">
-Open an entry below.
-</p>
-
-    <div class="journal">
-          <!-- entrada1 JOURNAL -->
-        <div class="journal-entry">
-
-      <button class="entry-btn" data-entry="entryJ1">
-                Entry I — FLOWERS
-            </button>
-            <div id="entryJ1" class="entry-content">
-                <p>
-                    Today I sent you flowers. Honestly, I’m not sure if they’ll arrive at your house — I never knew your address in Tijuana, so I sent them to your home. I hope you like them.<br><br>
-
-                    Today I’ll send you the link to this page. I hope you manage to figure out the password, although if you’re already here, I guess you did.<br><br>
-
-                    I hope you have a great day today! I want to tell you that yesterday I got the results from the first phase of my exam for the Huawei ICT Competition, and I advanced to the national stage. I’m very excited and studying hard to do well in the nationals.<br><br>
-
-                    Well, I’ll leave it here for today. I’m a bit tired; I haven’t slept since I started working on this page. I hope you log in and get to read some things here regularly.<br><br>
-
-                    Have a good flight, girl.<br><br>
-                </p>
-            </div>
-        </div>
-  <!-- termina entrada 1 inicia entrada 2 JOURNAL -->
-        
-        <!-- Puedes añadir más entradas aquí -->
-  <!-- final de las entradas NO BORRAR DIV SECTION JOURNAL -->
-    </div>
-
-  
 
 
  
-      <!-- FINAL DEL DIV DEL JOURNAL -->
+   <!-- SECTION JOURNAL -->
+<div id="sectionJournal" class="section">
+
+    <button type="button" onclick="navigateTo('sectionMenu')">
+        Back to Menu
+    </button>
+
+    <h2>THE NOTEBOOK</h2>
+
+    <button type="button" onclick="showJournal()">
+        Enter
+    </button>
+
+    <div id="journalText" style="display:none; margin-top:30px; max-width:700px; margin-left:auto; margin-right:auto; text-align:left;">
+
+        <p>
+        Today I sent you flowers. Honestly, I’m not sure if they’ll arrive at your house — I never knew your address in Tijuana, so I sent them to your home. I hope you like them.<br><br>
+
+        Today I’ll send you the link to this page. I hope you manage to figure out the password, although if you’re already here, I guess you did.<br><br>
+
+        I hope you have a great day today! I want to tell you that yesterday I got the results from the first phase of my exam for the Huawei ICT Competition, and I advanced to the national stage. I’m very excited and studying hard to do well in the nationals.<br><br>
+
+        Well, I’ll leave it here for today. I’m a bit tired; I haven’t slept since I started working on this page. I hope you log in and get to read some things here regularly.<br><br>
+
+        Have a good flight, girl.
+        </p>
+
+    </div>
+
 </div>
+
 
 <!-- div del final, NO BORRAR -->
 
@@ -510,6 +462,10 @@ function checkPassword() {
         document.getElementById("customAlert").classList.add("show");
     }
 }
+    function showJournal(){
+    document.getElementById("journalText").style.display = "block";
+}
+
 function navigateTo(sectionId){
 
     // Ocultar login
@@ -583,34 +539,7 @@ function playVideo(id){
 
 
 
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const buttons = document.querySelectorAll(".entry-btn");
-
-    buttons.forEach(button => {
-        button.addEventListener("click", function () {
-
-            const targetId = this.getAttribute("data-entry");
-            const target = document.getElementById(targetId);
-
-            if (!target) return;
-
-            // Cerrar otros
-            document.querySelectorAll(".entry-content").forEach(content => {
-                if (content !== target) {
-                    content.style.display = "none";
-                }
-            });
-
-            // Toggle actual
-            target.style.display =
-                target.style.display === "block" ? "none" : "block";
-        });
-    });
-
-});
-</script>
 
 
 </body>
