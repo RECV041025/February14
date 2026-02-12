@@ -118,10 +118,15 @@ input {
 /* SECCIONES */
 .hidden { display: none; }
 .section { 
-    display: none; 
-    animation: fadeIn 1s ease forwards; 
+    display: none;
     margin-top: 40px;
 }
+
+.section.active {
+    display: block;
+    animation: fadeIn 1s ease forwards;
+}
+
 @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
 /* VIDEOS */
@@ -500,26 +505,24 @@ function checkPassword() {
     }
 }
 function navigateTo(sectionId){
-    // Oculta login
+
     const login = document.getElementById("login");
     if(login) login.style.display = "none";
 
-    // Oculta todas las secciones
+    // Quitar active a todas
     document.querySelectorAll(".section").forEach(sec => {
-        sec.style.display = "none";
+        sec.classList.remove("active");
     });
 
-    // Muestra la sección destino
+    // Activar solo la sección correcta
     const target = document.getElementById(sectionId);
     if(target){
-        target.style.display = "block";
+        target.classList.add("active");
     } else {
         console.error("No existe la sección:", sectionId);
     }
-
-    // ❌ NO pausamos videos aquí
-    // El audio continúa si no entramos a otra sección con video
 }
+
 
 
 // Cerrar alerta
