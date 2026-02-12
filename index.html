@@ -536,24 +536,7 @@ function closeAlert() {
 
 
 </script>
-    <script>
-function toggleExclusiveEntry(id) {
-    const allEntries = document.querySelectorAll(".entry-content");
-
-    allEntries.forEach(entry => {
-        if (entry.id !== id) {
-            entry.style.display = "none";
-        }
-    });
-
-    const current = document.getElementById(id);
-    if (!current) return;
-
-    current.style.display =
-        current.style.display === "block" ? "none" : "block";
-}
-</script>
-
+    
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const lastModified = document.lastModified;
@@ -591,18 +574,36 @@ function playVideo(id){
 </script>
 
 
-<script>
+
+    <script>
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".entry-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-            const id = this.dataset.entry;
-            toggleExclusiveEntry(id);
+
+    const buttons = document.querySelectorAll(".entry-btn");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+
+            const targetId = this.getAttribute("data-entry");
+            const target = document.getElementById(targetId);
+
+            if (!target) return;
+
+            // Cerrar otros
+            document.querySelectorAll(".entry-content").forEach(content => {
+                if (content !== target) {
+                    content.style.display = "none";
+                }
+            });
+
+            // Toggle actual
+            target.style.display =
+                target.style.display === "block" ? "none" : "block";
         });
     });
+
 });
-
-
 </script>
+
 
 </body>
 </html>
