@@ -5,11 +5,10 @@
 <title>For You</title>
 
 <style>
-    
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background-color: #5a0f0f; /* rojo vino elegante después del login */
+    background-color: #5a0f0f;
     color: #fff;
 }
 
@@ -23,7 +22,7 @@ body {
     position: relative;
 }
 
-/* BOTONES AVIÓN */
+/* BOTONES */
 button {
     position: relative;
     padding: 12px 30px;
@@ -47,33 +46,24 @@ button:after {
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    animation: fly 1.2s ease-in-out infinite alternate;
-}
-@keyframes fly {
-    0% { right: 15px; transform: translateY(-50%) rotate(0deg);}
-    50% { right: 10px; transform: translateY(-55%) rotate(10deg);}
-    100% { right: 15px; transform: translateY(-50%) rotate(0deg);}
 }
 
-/* LOGIN FULL SCREEN */
+/* LOGIN */
 #login {
     position: fixed;
     inset: 0;
     z-index: 10;
 }
-
 .login-background {
     width: 100%;
     height: 100vh;
     overflow: hidden;
 }
-
 .login-background img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
 .login-overlay {
     position: absolute;
     inset: 0;
@@ -118,13 +108,10 @@ input {
 }
 
 /* SECCIONES */
-.hidden { display: none; }
 .section { 
     display: none; 
-    animation: fadeIn 1s ease forwards; 
     margin-top: 40px;
 }
-@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
 /* VIDEOS */
 .video-container {
@@ -135,13 +122,10 @@ input {
     border-radius: 25px;
     overflow: hidden;
 }
-
 .video-container video {
     width: 100%;
-    height: auto;
     display: block;
 }
-
 .video-overlay {
     position: absolute;
     inset: 0;
@@ -149,41 +133,14 @@ input {
     display:flex;
     justify-content:center;
     align-items:center;
+    flex-direction: column;
 }
 
-/* TEXTO FINAL */
+/* STRIKE */
 .strike {
     text-decoration: line-through;
     opacity: 0.7;
 }
-    /* JOURNAL STYLE */
-.journal {
-    margin-top: 40px;
-    text-align: left;
-}
-
-.entry {
-    margin-bottom: 20px;
-}
-
-.entry-btn {
-    width: 100%;
-    text-align: left;
-    background-color: #5a0f0f;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.entry-content {
-    display: none;
-    padding: 20px;
-    background: rgba(0,0,0,0.6);
-    border-left: 3px solid #b22222;
-    margin-top: 10px;
-    border-radius: 10px;
-    line-height: 1.6;
-}
-
 </style>
 </head>
 
@@ -195,8 +152,7 @@ input {
     <div class="login-background">
         <img src="bookcover2.jpg" alt="Book Cover">
         <div class="login-overlay">
-            <p id="lastUpdated" style="margin-top:30px; font-size:20px; opacity:0.7;"></p>
-
+            <p id="lastUpdated" style="margin-top:30px; font-size:14px; opacity:0.7;"></p>
             <h2>If you know… you know. When you know... you know.</h2>
             <input type="password" id="password" placeholder="password">
             <button onclick="checkPassword()">Enter</button>
@@ -207,7 +163,7 @@ input {
 <!-- SECTION 1 -->
 <div id="section1" class="section">
     <div class="video-container">
-        <video id="video1" src="song1.mp4"></video>
+        <video id="video1" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
         <div class="video-overlay">
             <button onclick="playVideo('video1'); nextSection(2)">Play & Continue</button>
         </div>
@@ -218,8 +174,8 @@ input {
 <div id="section2" class="section">
     <h2>Hope you enjoy it</h2>
     <p>I'm sorry. I just wanted to tell you this…</p>
-  <button onclick="nextSection(3)">Next</button>
-    <button onclick="previousSection(2)">Back</button> <!-- nuevo -->
+    <button onclick="nextSection(3)">Next</button>
+    <button onclick="previousSection(2)">Back</button>
 </div>
 
 <!-- SECTION 3 -->
@@ -232,16 +188,16 @@ input {
     </p>
     <p><i>No expectations.</i></p>
     <button onclick="nextSection(4)">Next & Video</button>
-    <button onclick="previousSection(3)">Back</button> <!-- nuevo -->
+    <button onclick="previousSection(3)">Back</button>
 </div>
 
 <!-- SECTION 4 -->
 <div id="section4" class="section">
     <div class="video-container">
-        <video id="video2" src="song2.mp4"></video>
+        <video id="video2" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
         <div class="video-overlay">
             <button onclick="playVideo('video2'); nextSection(5)">Play & Continue</button>
-            <button onclick="previousSection(4)">Back</button> <!-- nuevo -->
+            <button onclick="previousSection(4)">Back</button>
         </div>
     </div>
 </div>
@@ -249,184 +205,79 @@ input {
 <!-- SECTION 5 -->
 <div id="section5" class="section">
     <h2>I am proud of you</h2>
-<p>
-Truly.<br><br>
+    <p>
+    Truly.<br><br>
 
-Not because of what we were.<br>
-But because of who you are becoming.<br><br>
+    Not because of what we were.<br>
+    But because of who you are becoming.<br><br>
 
-I am deeply proud of the woman you have become — 
-professionally, personally, entirely.<br>
-Your progress. Your discipline. Your evolution.<br>
-It shows. And it is beautiful.<br><br>
+    I am deeply proud of the woman you have become — 
+    professionally, personally, entirely.<br>
+    Your progress. Your discipline. Your evolution.<br>
+    It shows. And it is beautiful.<br><br>
 
-There are many things we both could have handled better.<br>
-We were imperfect. Emotional. Learning.<br>
-But we did what we could with what we had at the time.<br>
-Not to justify it — just to acknowledge it.<br><br>
+    There are many things we both could have handled better.<br>
+    We were imperfect. Emotional. Learning.<br>
+    But we did what we could with what we had at the time.<br>
+    Not to justify it — just to acknowledge it.<br><br>
 
-I would have loved to be there in this chapter of your life,<br>
-to watch you rise even higher.<br>
-To grow alongside you.<br>
-But I am not strong enough to stand beside you<br>
-and watch you build it with someone else.<br>
-Not again.<br><br>
+    I would have loved to be there in this chapter of your life,<br>
+    to watch you rise even higher.<br>
+    To grow alongside you.<br>
+    But I am not strong enough to stand beside you<br>
+    and watch you build it with someone else.<br>
+    Not again.<br><br>
 
-And no, I am not angry.<br>
-Well… maybe a little.<br>
-Sometimes my thoughts consume me and I replay everything.<br>
-But even then, I choose to wish you well.<br><br>
+    And no, I am not angry.<br>
+    Well… maybe a little.<br>
+    Sometimes my thoughts consume me and I replay everything.<br>
+    But even then, I choose to wish you well.<br><br>
 
-Maybe we had that In-yeon —<br>
-that connection written somewhere beyond us.<br>
-But maybe we have not yet lived through the eight thousand layers<br>
-that would allow us to meet again in another lifetime and stay.<br><br>
+    Maybe we had that In-yeon —<br>
+    that connection written somewhere beyond us.<br>
+    But maybe we have not yet lived through the eight thousand layers<br>
+    that would allow us to meet again in another lifetime and stay.<br><br>
 
-Since the first time I read <i>The Seven Husbands of Evelyn Hugo</i>, 
-I imagined living a love story like that.<br>
-I did not think it would be this complicated in the 21st century.<br>
-Yet here we are.<br>
-Right now, I feel a little like Evelyn watching Celia on television.<br><br>
+    Since the first time I read <i>The Seven Husbands of Evelyn Hugo</i>, 
+    I imagined living a love story like that.<br>
+    I did not think it would be this complicated in the 21st century.<br>
+    Yet here we are.<br>
+    Right now, I feel a little like Evelyn watching Celia on television.<br><br>
 
-I hope you liked the flowers I left at your door —<br>
-the same door I watched you open so many times:<br>
-with happiness, with sadness, with anger. Anyways, I am not here to talk about what I feel.<br><br>
+    I hope you liked the flowers I left at your door —<br>
+    the same door I watched you open so many times:<br>
+    with happiness, with sadness, with anger. Anyways, I am not here to talk about what I feel.<br><br>
 
-You still have so many skies to conquer.<br>
-And as I once told you,<br>
-I will always pray for you in every flight you take.<br><br>
+    You still have so many skies to conquer.<br>
+    And as I once told you,<br>
+    I will always pray for you in every flight you take.<br><br>
 
-I truly hope one day I get to see you fly —<br>
-or maybe even be on a flight with you.<br>
-Captain Shed.<br><br>
+    I truly hope one day I get to see you fly —<br>
+    or maybe even be on a flight with you.<br>
+    Captain Shed.<br><br>
 
-I do not expect anything from this.<br>
-I just needed to leave it here — gently.<br><br>
+    I do not expect anything from this.<br>
+    I just needed to leave it here — gently.<br><br>
 
-No expectation.<br>
-Just gratitude.<br><br>
+    No expectation.<br>
+    Just gratitude.<br><br>
 
-Take care.
-</p>
+    Take care.
+    </p>
+
     <button onclick="nextSection(6)">Next & Video</button>
-    <button onclick="previousSection(5)">Back</button> <!-- nuevo -->
+    <button onclick="previousSection(5)">Back</button>
 </div>
 
 <!-- SECTION 6 -->
 <div id="section6" class="section">
     <div class="video-container">
-        <video id="video3" src="song3.mp4"></video>
+        <video id="video3" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
         <div class="video-overlay">
             <button onclick="playVideo('video3'); nextSection(7)">Play & Continue</button>
-            <button onclick="previousSection(6)">Back</button> <!-- nuevo -->
+            <button onclick="previousSection(6)">Back</button>
         </div>
     </div>
-</div>
-
-<!-- SECTION 7 -->
-<div id="section7" class="section">
-    <h2>My dearest Celia,</h2>
-     <p>
-            Congratulations! You absolutely deserve it. There is no doubt you are the most talented woman of our generation.<br><br>
-
-            I wish for nothing more than your complete and total happiness. I did not kiss the TV this time, but I cheered just as loudly as I did the other times.<br><br>
-
-            You definitely would be the greatest pilot of our generation.<br><br>
-
-            All my love,
-            </p>
-
-    <p class="strike">Edward</p>
-    <p>Evelyn</p>
-   <button onclick="nextSection(8)">Next & Video</button>
-    <button onclick="previousSection(7)">Back</button> <!-- nuevo -->
-</div>
-
-    <!-- SECCIÓN 8: VIDEO FINAL -->
-<div id="section8" class="section">
-    <div class="video-container">
-        <video id="videoFinal" src="after_all_these_years.mp4"></video>
-        <div class="video-overlay">
-            <button onclick="playVideo('videoFinal'); nextSection(9)">Play & Continue</button>
-            <button onclick="previousSection(8)">Back</button> <!-- nuevo -->
-        </div>
-    </div>
-</div>
-
-            <!-- SECTION 9 -->
-<div id="section9" class="section">
-    <h2>THE NOTEBOOK</h2>
-    
-   
-            <p>
-            I’ve decided to modernize The Notebook a little — my daily letters will stay here.<br><br>
-
-You’ll be able to come back to this same page and read me whenever you want. I’m not forcing anything. Only when you feel alone and want to read me… I’ll be here.<br><br>
-
-I didn’t want to admit it, but I think I will always have a soft spot for you.<br><br>
-By now, I think you already know who owns this website.<br><br>
-
-So I need to tell you — when I saw you again, you have no idea how much I had to hold myself back from running to you, hugging you, and telling you how much I missed you.<br><br>
-
-Literally… an AFTER ALL THESE YEARS for me.<br><br>
-Maybe not for you.<br><br>
-But I will always be yours, even if you are never mine again.<br><br>
-
-
-            <p>
-           <button onclick="nextSection(10)">Next & Video</button>
-    <button onclick="previousSection(9)">Back</button> <!-- nuevo -->
-</div>
-
-      <!-- SECTION 10 -->
-    <div id="section10" class="journal">
-    <h2>Journal</h2>
-
-    <div class="entry">
-        <button class="entry-btn" onclick="toggleEntry('entry1')">
-            Entry I — After All These Years
-        </button>
-        <div id="entry1" class="entry-content">
-            <p>
-            I’ve decided to modernize The Notebook a little — my daily letters will stay here. <br><br>
-
-            You’ll be able to come back to this same page and read me whenever you want. 
-            I’m not forcing anything. Only when you feel alone and want to read me… I’ll be here. <br><br>
-
-            I didn’t want to admit it, but I think I will always have a soft spot for you. 
-            By now, I think you already know who owns this website. <br><br>
-
-            When I saw you again, you have no idea how much I had to hold myself back 
-            from running to you, hugging you, and telling you how much I missed you. <br><br>
-
-            Literally… <b>AFTER ALL THESE YEARS</b> for me.  
-            Maybe not for you.  
-            But I will always be yours, even if you are never mine again. <br><br>
- <i>
-            Tip: If you don’t see anything new on the page, press F5 a few times to refresh it properly. 
-            Sometimes updates take a moment to appear.
-            </i>
-           
-            </p>
-        </div>
-    </div>
-
-
-
-    <button onclick="previousSection(10)">Back</button>
-    <button onclick="goHome()">Back to Start</button>
-</div>
-
-</div>
-
-<!-- ALERT -->
-<div id="customAlert">
-    <p>
-        Wrong password!<br>
-        MAYBE YOU HAVE TO READ IT AGAIN, BABE.<br>
-        tip: write the title all together in lowercase
-    </p>
-    <button onclick="closeAlert()">ok</button>
 </div>
 
 <script>
@@ -449,74 +300,40 @@ function nextSection(num){
     document.getElementById("section"+num).style.display = "block";
 }
 
-// CAMBIO DE SECCIONES
-function nextSection(sectionNumber){
-    document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    document.getElementById("section"+sectionNumber).style.display = "block";
-}
-
-// REGRESAR A SECCIÓN ANTERIOR
-function previousSection(currentSection){
-    let prev = currentSection - 1;
-    if(prev < 1) return; // no hay sección 0
+function previousSection(current){
+    let prev = current - 1;
+    if(prev < 1) return;
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
     document.getElementById("section"+prev).style.display = "block";
-    
-    // pausar todos los videos al retroceder
-    //document.querySelectorAll("video").forEach(v => {
-    //    v.pause();
-    //    v.currentTime = 0;
-    //});
 }
 
-// VOLVER AL INICIO
 function goHome(){
-    // Ocultar secciones
     document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-    // Mostrar login y portada
-    document.getElementById("login").classList.remove("hidden");
-
-    // Reiniciar videos
+    document.getElementById("login").style.display = "block";
     document.querySelectorAll("video").forEach(v => {
         v.pause();
         v.currentTime = 0;
     });
-
-    // Forzar que la portada y overlay se vean correctamente
-    const loginBg = document.querySelector("#login .login-background");
-    loginBg.style.display = "block";
-    const overlay = document.querySelector("#login .login-overlay");
-    overlay.style.display = "flex";
 }
-</script>
-<script>
+
+function playVideo(id){
+    document.querySelectorAll("video").forEach(v => {
+        if(v.id !== id){
+            v.pause();
+            v.currentTime = 0;
+        }
+    });
+    const video = document.getElementById(id);
+    if(video) video.play();
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-    const lastModified = document.lastModified;
-    const date = new Date(lastModified);
-
-    const options = { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-    };
-
+    const date = new Date(document.lastModified);
     document.getElementById("lastUpdated").innerHTML =
-        "Last updated: " + date.toLocaleDateString("en-US", options);
+        "Last updated: " + date.toLocaleString("en-US");
 });
 </script>
-<script>
-function toggleEntry(id) {
-    var entry = document.getElementById(id);
 
-    if (entry.style.display === "block") {
-        entry.style.display = "none";
-    } else {
-        entry.style.display = "block";
-    }
-}
-</script>
-
+</div>
 </body>
 </html>
