@@ -538,15 +538,21 @@ function closeAlert() {
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    document.querySelectorAll(".entry-btn").forEach(btn => {
-        btn.addEventListener("click", function (event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const id = this.dataset.entry;
-            toggleExclusiveEntry(id);
-        });
-    });
+    const lastModified = document.lastModified;
+    const date = new Date(lastModified);
+
+    const options = { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+
+    document.getElementById("lastUpdated").innerHTML =
+        "Last updated: " + date.toLocaleDateString("en-US", options);
 });
+    
 
 </script>
 <script>
@@ -589,15 +595,15 @@ function playVideo(id){
 
 
 <script>
-document.querySelectorAll(".entry-btn").forEach(btn => {
-    btn.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const id = this.dataset.entry;
-        toggleExclusiveEntry(id);
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".entry-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            const id = this.dataset.entry;
+            toggleExclusiveEntry(id);
+        });
     });
 });
+
 </script>
 
 </body>
