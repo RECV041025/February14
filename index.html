@@ -204,8 +204,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="login-overlay">
             <p id="lastUpdated" style="margin-top:30px; font-size:20px; opacity:0.7;"></p>
 
-            <h2>If you know… you know. When you know... you know.</h2>
-           <p> Still don't know the password? "3 RULES", REMEMBERRRR! </p>
+            <h2>When you know... you know.</h2>
+          
             <input type="password" id="password" placeholder="password">
             <button type="button" onclick="checkPassword()">Enter</button>
         </div>
@@ -583,9 +583,8 @@ tú sabes que no es así<br><br>
 <!-- ALERTA -->
 <div id="customAlert">
     <p>
-        wrong password!<br>
-        MAYBE YOU HAVE TO READ IT AGAIN, BABE.<br>
-        tip: write it all together in lowercase
+        Wrong password!<br>
+        
     </p>
     <button onclick="closeAlert()">ok</button>
 </div>
@@ -594,7 +593,7 @@ tú sabes que no es así<br><br>
 // LOGIN
 function checkPassword() {
     var password = document.getElementById("password").value;
-    if(password === "violentbentbackwardsoverthegrass") {
+    if(password === "fuckyou") {
         // Ocultar login completo
         document.getElementById("login").style.display = "none";
         // Mostrar menú de opciones primero
