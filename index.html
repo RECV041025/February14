@@ -204,7 +204,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="login-overlay">
             <p id="lastUpdated" style="margin-top:30px; font-size:20px; opacity:0.7;"></p>
 
-            <h2>When you know... you know.</h2>
+            <h2>When you know... you know. </h2>
+            <p>Sorry por la falla técnica, ya todo está bien en la página....</p>
           
             <input type="password" id="password" placeholder="password">
             <button type="button" onclick="checkPassword()">Enter</button>
@@ -438,6 +439,8 @@ Go to The Notebook
         <button type="button" onclick="showJournalDay('day4')">February 15, 2026</button>
         <button type="button" onclick="showJournalDay('day5')">February 16, 2026</button>
        <button type="button" onclick="showJournalDay('day6')">February 17, 2026</button>
+        <button type="button" onclick="showJournalDay('day7')">February 18, 2026</button>
+        <button type="button" onclick="showJournalDay('day8')">February 19, 2026</button>
     </div>
 
     <div id="day1" class="journal-day">
@@ -570,6 +573,79 @@ tú sabes que no es así<br><br>
         </p>
 
     </div>
+   <div id="day7" class="journal-day">
+       
+        <p>
+        Hi, you.<br><br>
+
+Today was calm. Nothing extraordinary happened.<br><br>
+Just a normal day… but even normal days carry you in them.<br><br>
+
+I found myself thinking about you more than once<br><br>
+in small moments, in quiet pauses,<br><br>
+in the spaces between everything I had to do.<br><br>
+
+Not in a heavy way.<br><br>
+Not in a desperate way.<br><br>
+Just softly.<br><br>
+
+I reflected a lot today.<br><br>
+About timing.<br><br>
+About connection.<br><br>
+About how some people don’t just pass through your life <br><br>
+they stay in subtle ways, like a favorite song you never fully stop hearing.<br><br>
+
+I don’t know what chapter we’re in anymore.<br><br>
+But I know that when I think of you,<br><br>
+there’s still warmth there.<br><br>
+
+And that says enough.<br><br>
+
+Wherever you are tonight,<br><br>
+I hope the sky is gentle with you.<br><br>
+
+Always,<br><br>
+V.<br><br>
+        </p>
+
+    </div>
+   <div id="day8" class="journal-day">
+       
+        <p>
+        Hola, nenita. Hoy fuí a nadar y nos pusieron a hacer gigantes y dioooossss, que horror hacer gigantes con el estilo que menos te sale, hacer gigantes en pecho es lo peor <br><br>
+           creo que ya me sale mejor honestamente pero bueno estuvo pesado, he ido todos los días y vaya que es pesado.<br><br>
+           Te dejo un poemita por aquí.<br><br>
+           ¿dónde estará el lugar en el que seguimos juntos?<br><br>
+
+me envuelve tu voz<br><br>
+— solo que no es tu voz—<br><br>
+es un recuerdo gris<br><br>
+de esos que se quedan<br><br>
+en los lugares que dejamos<br><br>
+
+¿dónde estará el camino<br><br>
+que me llevará a tus brazos?<br><br>
+cuando sigo aquí<br><br>
+aún siento tu abrazo<br><br>
+pero avanza la noche<br><br>
+y me pinta de gris<br><br>
+el cielo congelado<br><br>
+
+siempre tan puntual<br><br>
+—muy pronto, o muy tarde—<br><br>
+en el momento justo<br><br>
+no fuiste el indicado<br><br>
+
+pero supimos coincidir<br><br>
+y mi gris corazón,<br><br>
+mecido por el viento,<br><br>
+anhela reencontrarnos<br><br>
+
+-Ariadna a Teseo<br><br>
+           
+        </p>
+
+    </div>
 
     <button type="button" onclick="navigateTo('sectionMenu')">Back to Menu</button>
 </div>
@@ -593,7 +669,7 @@ tú sabes que no es así<br><br>
 // LOGIN
 function checkPassword() {
     var password = document.getElementById("password").value;
-    if(password === "fuckyou") {
+    if(password === "violentbentbackwardsoverthegrass") {
         // Ocultar login completo
         document.getElementById("login").style.display = "none";
         // Mostrar menú de opciones primero
